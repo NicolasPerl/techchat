@@ -1,0 +1,91 @@
+[
+    {
+        "name": "minphp/html",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phillipsdata/minphp-html.git",
+            "reference": "eecb948b460dd44359b7a39ea277ee1f95c4c736"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phillipsdata/minphp-html/zipball/eecb948b460dd44359b7a39ea277ee1f95c4c736",
+            "reference": "eecb948b460dd44359b7a39ea277ee1f95c4c736",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0",
+            "satooshi/php-coveralls": "dev-master",
+            "squizlabs/php_codesniffer": "~2.2"
+        },
+        "time": "2015-12-11 18:47:15",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Minphp\\Html\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Cody Phillips",
+                "email": "therealclphillips@gmail.com"
+            }
+        ],
+        "description": "HTML Helper",
+        "homepage": "http://github.com/phillipsdata/minphp-html"
+    },
+    {
+        "name": "minphp/javascript",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phillipsdata/minphp-javascript.git",
+            "reference": "0f7baaf4fce67d42ecd7f7e6a4c252644c011efd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phillipsdata/minphp-javascript/zipball/0f7baaf4fce67d42ecd7f7e6a4c252644c011efd",
+            "reference": "0f7baaf4fce67d42ecd7f7e6a4c252644c011efd",
+            "shasum": ""
+        },
+        "require": {
+            "minphp/html": "~1.0",
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0",
+            "satooshi/php-coveralls": "dev-master",
+            "squizlabs/php_codesniffer": "~2.2"
+        },
+        "time": "2015-12-11 22:08:14",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Minphp\\Javascript\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Cody Phillips",
+                "email": "therealclphillips@gmail.com"
+            }
+        ],
+        "description": "Javascript Helper",
+        "homepage": "http://github.com/phillipsdata/minphp-javascript"
+    }
+]

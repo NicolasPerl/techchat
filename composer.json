@@ -1,0 +1,5 @@
+{
+    "require": {
+        "minphp/javascript": "1.0.*"
+    }
+}
