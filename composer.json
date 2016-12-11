@@ -1,5 +1,5 @@
 {
     "require": {
-        "minphp/javascript": "1.0.*"
+        "components/jquery": "3.0.*"
     }
 }

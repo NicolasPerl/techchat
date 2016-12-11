@@ -6,6 +6,4 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Minphp\\Javascript\\' => array($vendorDir . '/minphp/javascript/src'),
-    'Minphp\\Html\\' => array($vendorDir . '/minphp/html/src'),
 );
