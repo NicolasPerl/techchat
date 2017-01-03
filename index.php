@@ -112,10 +112,10 @@
 					}
 
 					// retrieve jumbotron
-					$query = 'SELECT media FROM news';
+					$query = 'SELECT picture FROM jumbotron';
 					$result = $con->query($query);
 					$fetch=$result->fetch_assoc();
-					echo '<img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'"/>';
+					echo '<img src="data:image/jpeg;base64,'.base64_encode( $fetch['picture'] ).'"/>';
 
 
 					$con->close();
@@ -160,6 +160,33 @@
 						
 			    		
 					</div>
+
+					<div class="col-md-4">
+						<?php
+
+						$con = mysqli_connect('127.0.0.1',"root","","techchat");
+						if (mysqli_connect_errno()) {
+							echo "Failed to connect to mysql: " . mysqli_connect_error();
+						}
+
+						$query = "SELECT video FROM videos ORDER BY id DESC";
+						//query the result and assign in to $result
+						$result = $con->query($query);
+						//if the row is not empty
+
+						if ($result->num_rows > 0) {
+							var_dump($result);
+							header('Content-Type: video/mp4');
+							while ($fetch=$result->fetch_assoc()) {
+								var_dump($fetch);
+							}
+						}
+
+						//close the connection
+						$con->close();
+						?>
+					</div>
+
 				</div>
 			</div>
 		</div>
