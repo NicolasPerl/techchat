@@ -12,7 +12,12 @@
 	$imageID = intval( $_GET['image']);
 	
 	// make the connection to the local server
-	$con = mysqli_connect('127.0.0.1',"root","","techchat");
+	//$con = mysqli_connect('127.0.0.1',"root","","techchat");
+	$servername = "us-cdbr-iron-east-04.cleardb.net";
+	$username = "b4c5e18a9ad6fa";
+	$password = "047e8b9d";
+	$dbname = "heroku_d3e06c073a5cf59";
+	$con = mysqli_connect($servername,$username,$password,$dbname);
 	if (mysqli_connect_errno()) {
 		echo "Failed to connect to mysql: " . mysqli_connect_error();
 	}
@@ -37,7 +42,6 @@
 	//close the connection
 	$con->close();
 ?>
-	<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>
 
 </body>
 </html>
