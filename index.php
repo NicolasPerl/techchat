@@ -67,6 +67,8 @@
 	    document.cookie=c_name+ "=" +escape(value)+
 	    ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
 	}
+
+
 	</script>
 
 </head>
@@ -103,13 +105,15 @@
 					    </div>
 					</div>-->
 					<?php 
-
+					ini_set('display_errors',1); ini_set('display_startup_errors',1); 
+					error_reporting(-1);
 					
-					$servername = "us-cdbr-iron-east-04.cleardb.net";
+					/*$servername = "us-cdbr-iron-east-04.cleardb.net";
 					$username = "b4c5e18a9ad6fa";
 					$password = "047e8b9d";
-					$dbname = "heroku_d3e06c073a5cf59";
-					$con = mysqli_connect($servername,$username,$password,$dbname);
+					$dbname = "heroku_d3e06c073a5cf59";*/
+					$con = mysqli_connect('127.0.0.1',"root","","techchat");
+					//$con = mysqli_connect($servername,$username,$password,$dbname);
 					if (mysqli_connect_errno()) {
 						echo "Failed to connect to mysql: " . mysqli_connect_error();
 					}
@@ -136,12 +140,12 @@
 						<?php
 
 						// make the connection to the local server
-						//$con = mysqli_connect('127.0.0.1',"root","","techchat");
-						$servername = "us-cdbr-iron-east-04.cleardb.net";
+						$con = mysqli_connect('127.0.0.1',"root","","techchat");
+						/*$servername = "us-cdbr-iron-east-04.cleardb.net";
 						$username = "b4c5e18a9ad6fa";
 						$password = "047e8b9d";
-						$dbname = "heroku_d3e06c073a5cf59";
-						$con = mysqli_connect($servername,$username,$password,$dbname);
+						$dbname = "heroku_d3e06c073a5cf59";*/
+						//$con = mysqli_connect($servername,$username,$password,$dbname);
 						if (mysqli_connect_errno()) {
 							echo "Failed to connect to mysql: " . mysqli_connect_error();
 						}
@@ -169,37 +173,41 @@
 			    		
 					</div>
 
-					<div class="col-md-4">
-						<?php
+					<div class="fix">
+						<div class="col-md-4">
+							<?php
 
-						//$con = mysqli_connect('127.0.0.1',"root","","techchat");
-						$servername = "us-cdbr-iron-east-04.cleardb.net";
-						$username = "b4c5e18a9ad6fa";
-						$password = "047e8b9d";
-						$dbname = "heroku_d3e06c073a5cf59";
-						$con = mysqli_connect($servername,$username,$password,$dbname);
-						if (mysqli_connect_errno()) {
-							echo "Failed to connect to mysql: " . mysqli_connect_error();
-						}
-
-						$query = "SELECT video FROM videos ORDER BY id DESC";
-						//query the result and assign in to $result
-						$result = $con->query($query);
-						//if the row is not empty
-
-						if ($result->num_rows > 0) {
-							var_dump($result);
-							header('Content-Type: video/mp4');
-							while ($fetch=$result->fetch_assoc()) {
-								var_dump($fetch);
+							$con = mysqli_connect('127.0.0.1',"root","","techchat");
+							/*$servername = "us-cdbr-iron-east-04.cleardb.net";
+							$username = "b4c5e18a9ad6fa";
+							$password = "047e8b9d";
+							$dbname = "heroku_d3e06c073a5cf59";
+							$con = mysqli_connect($servername,$username,$password,$dbname);*/
+							if (mysqli_connect_errno()) {
+								echo "Failed to connect to mysql: " . mysqli_connect_error();
 							}
-						}
 
-						//close the connection
-						$con->close();
-						?>
+							$query = "SELECT vidID FROM videos ORDER BY id ASC";
+							//query the result and assign in to $result
+							$result = $con->query($query);
+							//if the row is not empty
+
+							if ($result->num_rows > 0) {
+								while ($fetch=$result->fetch_assoc()) {
+									//convert array to string
+									$string_version = implode(',', $fetch);
+										
+								}
+								
+							}
+
+							//close the connection
+							$con->close();
+							?>
+							<iframe id="videoDay" width="400" height="200" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
+							
+						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
