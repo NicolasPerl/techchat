@@ -6,7 +6,7 @@
     $headline = $_POST["headline"];
     $review = htmlspecialchars($_POST["comment"]);
     $test_review = strtolower( $review );
-    $time = date.timezone("r");
+    $time = date("r");
     // open file and append name
     $fh = fopen ("./comments", "a");
     fwrite($fh, "$name\n");
