@@ -129,22 +129,33 @@
 						$servername = "us-cdbr-iron-east-04.cleardb.net";
 						$username = "b4c5e18a9ad6fa";
 						$password = "047e8b9d";
-						$dbname = "heroku_d3e06c073a5cf59";*/
+						$dbname = "heroku_d3e06c073a5cf59";
 						//$con = mysqli_connect('127.0.0.1',"root","","techchat");
 						$con = mysqli_connect($servername,$username,$password,$dbname);
+
 						if (mysqli_connect_errno()) {
 							echo "Failed to connect to mysql: " . mysqli_connect_error();
 						}
 
-						// retrieve jumbotron
-						$query = 'SELECT picture FROM jumbotron';
-						$result = $con->query($query);
-						$fetch=$result->fetch_assoc();
-						echo '<img src="data:image/jpeg;base64,'.base64_encode( $fetch['picture'] ).'"/>';
+						$query = "SELECT vidID FROM videos ORDER BY id ASC";
+							//query the result and assign in to $result
+							$result = $con->query($query);
+							//if the row is not empty
 
+							if ($result->num_rows > 0) {
+								while ($fetch=$result->fetch_assoc()) {
+									//convert array to string
+									$string_version = implode(',', $fetch);
+								}
+								
+							}
 
-						$con->close();
-						?>
+							//close the connection
+							$con->close();
+							?>
+
+							<iframe id="videoDay" width="400" height="200" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
+			
 										      
 	    				</div>      
 					</div>      
