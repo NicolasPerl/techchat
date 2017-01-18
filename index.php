@@ -150,6 +150,47 @@
 					</div>      
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="wrap">
+						<!--<div class="type-wrap">
+					        <div id="typed-strings">
+					            <span>Stay <strong>updated</strong> on modern tech</span>
+					            <p>30 second <em>short</em> stories for everyone</p>
+					            <p>Enjoy</p>
+					        </div>
+					        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; bottom: 430px; font-size: 300%; color: white; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 150px;"></span>
+					    </div>
+					</div>-->
+					<?php 
+					ini_set('display_errors',1); ini_set('display_startup_errors',1); 
+					error_reporting(-1);
+					
+					$servername = "us-cdbr-iron-east-04.cleardb.net";
+					$username = "b4c5e18a9ad6fa";
+					$password = "047e8b9d";
+					$dbname = "heroku_d3e06c073a5cf59";
+					//$con = mysqli_connect('127.0.0.1',"root","","techchat");
+					$con = mysqli_connect($servername,$username,$password,$dbname);
+					if (mysqli_connect_errno()) {
+						echo "Failed to connect to mysql: " . mysqli_connect_error();
+					}
+
+					// retrieve jumbotron
+					$query = 'SELECT picture FROM jumbotron';
+					$result = $con->query($query);
+					$fetch=$result->fetch_assoc();
+					echo '<img src="data:image/jpeg;base64,'.base64_encode( $fetch['picture'] ).'"/>';
+
+
+					$con->close();
+					?>
+									      
+    			</div>      
+			</div>      
+		
+
 	<!--</div>-->
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<div class="post">
@@ -159,12 +200,12 @@
 						<?php
 
 						// make the connection to the local server
-						$con = mysqli_connect('127.0.0.1',"root","","techchat");
-						/*$servername = "us-cdbr-iron-east-04.cleardb.net";
+						//$con = mysqli_connect('127.0.0.1',"root","","techchat");
+						$servername = "us-cdbr-iron-east-04.cleardb.net";
 						$username = "b4c5e18a9ad6fa";
 						$password = "047e8b9d";
-						$dbname = "heroku_d3e06c073a5cf59";*/
-						//$con = mysqli_connect($servername,$username,$password,$dbname);
+						$dbname = "heroku_d3e06c073a5cf59";
+						$con = mysqli_connect($servername,$username,$password,$dbname);
 						if (mysqli_connect_errno()) {
 							echo "Failed to connect to mysql: " . mysqli_connect_error();
 						}
@@ -202,12 +243,12 @@
 						<div class="col-md-4">
 							<?php
 
-							$con = mysqli_connect('127.0.0.1',"root","","techchat");
-							/*$servername = "us-cdbr-iron-east-04.cleardb.net";
+							//$con = mysqli_connect('127.0.0.1',"root","","techchat");
+							$servername = "us-cdbr-iron-east-04.cleardb.net";
 							$username = "b4c5e18a9ad6fa";
 							$password = "047e8b9d";
 							$dbname = "heroku_d3e06c073a5cf59";
-							$con = mysqli_connect($servername,$username,$password,$dbname);*/
+							$con = mysqli_connect($servername,$username,$password,$dbname);
 							if (mysqli_connect_errno()) {
 								echo "Failed to connect to mysql: " . mysqli_connect_error();
 							}
