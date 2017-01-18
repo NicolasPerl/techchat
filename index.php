@@ -108,12 +108,12 @@
 					ini_set('display_errors',1); ini_set('display_startup_errors',1); 
 					error_reporting(-1);
 					
-					/*$servername = "us-cdbr-iron-east-04.cleardb.net";
+					$servername = "us-cdbr-iron-east-04.cleardb.net";
 					$username = "b4c5e18a9ad6fa";
 					$password = "047e8b9d";
-					$dbname = "heroku_d3e06c073a5cf59";*/
-					$con = mysqli_connect('127.0.0.1',"root","","techchat");
-					//$con = mysqli_connect($servername,$username,$password,$dbname);
+					$dbname = "heroku_d3e06c073a5cf59";
+					//$con = mysqli_connect('127.0.0.1',"root","","techchat");
+					$con = mysqli_connect($servername,$username,$password,$dbname);
 					if (mysqli_connect_errno()) {
 						echo "Failed to connect to mysql: " . mysqli_connect_error();
 					}
@@ -140,12 +140,12 @@
 						<?php
 
 						// make the connection to the local server
-						$con = mysqli_connect('127.0.0.1',"root","","techchat");
-						/*$servername = "us-cdbr-iron-east-04.cleardb.net";
+						//$con = mysqli_connect('127.0.0.1',"root","","techchat");
+						$servername = "us-cdbr-iron-east-04.cleardb.net";
 						$username = "b4c5e18a9ad6fa";
 						$password = "047e8b9d";
-						$dbname = "heroku_d3e06c073a5cf59";*/
-						//$con = mysqli_connect($servername,$username,$password,$dbname);
+						$dbname = "heroku_d3e06c073a5cf59";
+						$con = mysqli_connect($servername,$username,$password,$dbname);
 						if (mysqli_connect_errno()) {
 							echo "Failed to connect to mysql: " . mysqli_connect_error();
 						}
@@ -177,12 +177,12 @@
 						<div class="col-md-4">
 							<?php
 
-							$con = mysqli_connect('127.0.0.1',"root","","techchat");
-							/*$servername = "us-cdbr-iron-east-04.cleardb.net";
+							//$con = mysqli_connect('127.0.0.1',"root","","techchat");
+							$servername = "us-cdbr-iron-east-04.cleardb.net";
 							$username = "b4c5e18a9ad6fa";
 							$password = "047e8b9d";
 							$dbname = "heroku_d3e06c073a5cf59";
-							$con = mysqli_connect($servername,$username,$password,$dbname);*/
+							$con = mysqli_connect($servername,$username,$password,$dbname);
 							if (mysqli_connect_errno()) {
 								echo "Failed to connect to mysql: " . mysqli_connect_error();
 							}
