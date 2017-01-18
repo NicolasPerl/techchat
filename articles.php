@@ -54,7 +54,7 @@
 				echo "<br>";
 				echo '<img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'" class="article-pic img-rounded center-block img-responsive" />';
 				echo "<br>";
-				echo '<p>'.$fetch['story'].'</p>';
+				echo '<p>.$fetch['story'].'</p>';
 
 				
 		}
