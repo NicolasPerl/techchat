@@ -47,6 +47,16 @@
 
 		if ($result->num_rows > 0) {
 
+			while ($fetch=$result->fetch_assoc()) {
+				//var_dump($fetch);
+				echo '<img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'"/>';
+				echo "<br>";
+				echo $fetch['headline'];
+				echo "<br>";
+				echo $fetch['story'];
+				
+			}
+
 
 			while ($fetch=$result->fetch_assoc()) {
 				//var_dump($fetch);
