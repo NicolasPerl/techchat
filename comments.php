@@ -6,9 +6,16 @@
     $headline = $_POST["headline"];
     $review = htmlspecialchars($_POST["comment"]);
     $test_review = strtolower( $review );
-    $time = date("r");
-    // add comment to database
-    insert_entry($name,$email,$headline,$time,$review);
+    $time = date.timezone("r");
+    // open file and append name
+    $fh = fopen ("./comments", "a");
+    fwrite($fh, "$name\n");
+    fwrite($fh, "$email\n");
+    fwrite($fh, "$headline\n");
+    fwrite($fh, "$time\n");
+    fwrite($fh, "$review\n");
+    fwrite($fh, "\n");
+    fclose($fh);
     // write a thank you note for commenting
     print <<< THANKS
     <html>
@@ -55,7 +62,7 @@
   <ul class="nav navbar-nav">
                     
   <li>
-  <a href="./index.php">Home</a></li>
+  <a href="./index.html">Home</a></li>
                 
   </ul>
             
@@ -70,28 +77,8 @@
   </nav>
     <div class="container">
             <h2> Thank you for your valuable feedback. </h2>
-            <a href = "./all_comments.php"> View All Comments <a/>
     </div>
         </body>
     </html>
 THANKS;
-
-    function insert_entry($name, $email, $headline, $time, $review)
-    {
-    $servername = "fall-2016.cs.utexas.edu";
-    $username = "nicolasp";
-    $password = "kn2tw0~GuW";
-    $dbname = "cs329e_nicolasp";
-    // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-    // Insert new row
-    $sql = "INSERT INTO comments VALUES ('$name','$email','$headline','$time','$review')";
-    mysqli_query($conn, $sql);    
-    // Close connection
-    mysqli_close($conn);
-    }
 ?>

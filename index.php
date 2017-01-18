@@ -74,6 +74,24 @@
 </head>
 
 <body>
+<!--Facebook API integration-->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '224533154659650',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 
 	<!--Connect to facebook -->
 	<div id="fb-root"></div>
@@ -91,46 +109,47 @@
 	    
 	<!-- Page Content -->
 	<!--<div class="jumbotron">-->
-		        
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="wrap">
-						<!--<div class="type-wrap">
-					        <div id="typed-strings">
-					            <span>Stay <strong>updated</strong> on modern tech</span>
-					            <p>30 second <em>short</em> stories for everyone</p>
-					            <p>Enjoy</p>
-					        </div>
-					        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; bottom: 430px; font-size: 300%; color: white; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 150px;"></span>
-					    </div>
-					</div>-->
-					<?php 
-					ini_set('display_errors',1); ini_set('display_startup_errors',1); 
-					error_reporting(-1);
-					
-					/*$servername = "us-cdbr-iron-east-04.cleardb.net";
-					$username = "b4c5e18a9ad6fa";
-					$password = "047e8b9d";
-					$dbname = "heroku_d3e06c073a5cf59";*/
-					$con = mysqli_connect('127.0.0.1',"root","","techchat");
-					//$con = mysqli_connect($servername,$username,$password,$dbname);
-					if (mysqli_connect_errno()) {
-						echo "Failed to connect to mysql: " . mysqli_connect_error();
-					}
+		    <div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="wrap">
+							<!--<div class="type-wrap">
+						        <div id="typed-strings">
+						            <span>Stay <strong>updated</strong> on modern tech</span>
+						            <p>30 second <em>short</em> stories for everyone</p>
+						            <p>Enjoy</p>
+						        </div>
+						        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; bottom: 430px; font-size: 300%; color: white; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 150px;"></span>
+						    </div>
+						</div>-->
+						<?php 
+						ini_set('display_errors',1); ini_set('display_startup_errors',1); 
+						error_reporting(-1);
+						
+						/*$servername = "us-cdbr-iron-east-04.cleardb.net";
+						$username = "b4c5e18a9ad6fa";
+						$password = "047e8b9d";
+						$dbname = "heroku_d3e06c073a5cf59";*/
+						$con = mysqli_connect('127.0.0.1',"root","","techchat");
+						//$con = mysqli_connect($servername,$username,$password,$dbname);
+						if (mysqli_connect_errno()) {
+							echo "Failed to connect to mysql: " . mysqli_connect_error();
+						}
 
-					// retrieve jumbotron
-					$query = 'SELECT picture FROM jumbotron';
-					$result = $con->query($query);
-					$fetch=$result->fetch_assoc();
-					echo '<img src="data:image/jpeg;base64,'.base64_encode( $fetch['picture'] ).'"/>';
+						// retrieve jumbotron
+						$query = 'SELECT picture FROM jumbotron';
+						$result = $con->query($query);
+						$fetch=$result->fetch_assoc();
+						echo '<img src="data:image/jpeg;base64,'.base64_encode( $fetch['picture'] ).'"/>';
 
 
-					$con->close();
-					?>
-									      
-    			</div>      
-			</div>      
-		
+						$con->close();
+						?>
+										      
+	    				</div>      
+					</div>      
+				</div>
+			</div>
 	<!--</div>-->
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<div class="post">
@@ -162,12 +181,18 @@
 								echo nl2br("\n");
 								echo $fetch['headline'];	
 								echo nl2br("\n");
+								echo '<div class="fb-like"';
+										echo 'data-share="true"';
+										echo 'data-width="450"';
+										echo 'data-show-faces="true">';
+								echo '</div>';
 							}
 						}
 						
 						//close the connection
 						$con->close();
 						?>
+						
 
 						
 			    		
@@ -196,7 +221,6 @@
 								while ($fetch=$result->fetch_assoc()) {
 									//convert array to string
 									$string_version = implode(',', $fetch);
-										
 								}
 								
 							}
@@ -204,12 +228,36 @@
 							//close the connection
 							$con->close();
 							?>
+
 							<iframe id="videoDay" width="400" height="200" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
+							<div
+								class="fb-like"
+								data-share="true"
+								data-width="450"
+								data-show-faces="true">
+							</div>
+							
 							
 						</div>
 					</div>
 				</div>
 			</div>
+				<div class="footer">
+					<div class="row">
+						<div class="col-lg-12">
+							<footer>
+								<ul style="list-style-type: none">
+									<li class="about"><a href="./contacts.html">Contact Us</a></li>
+									<li class="about"><a href="#">Work With Us</a></li>
+									<li class="about"><a href="#">Tech Tips</a></li>
+									<!--<li class="about"><a href="#">Advertise With Us</a></li>-->
+								</ul>
+
+								<p>Copyright &#169 TechChat Network Inc. All rights reserved</p>
+							</footer>
+						</div>
+					</div>
+				</div>
 		</div>
 
 	    
