@@ -111,8 +111,11 @@
 	<!--<div class="jumbotron">-->
 		    <div class="container">
 				<div class="row">
+					<div class="social">
+					<a href="https://www.instagram.com/techchat/?hl=en"><img src="./instagram.png" alt="instagram" /></a>
+					</div>
 					<div class="col-lg-12">
-						<div class="wrap">
+						<!--<div class="wrap">-->
 							<!--<div class="type-wrap">
 						        <div id="typed-strings">
 						            <span>Stay <strong>updated</strong> on modern tech</span>
@@ -137,7 +140,7 @@
 							echo "Failed to connect to mysql: " . mysqli_connect_error();
 						}
 
-						$query = "SELECT vidID FROM videos ORDER BY id ASC";
+						$query = "SELECT vidID FROM jumbotron ORDER BY id ASC";
 							//query the result and assign in to $result
 							$result = $con->query($query);
 							//if the row is not empty
@@ -154,10 +157,10 @@
 							$con->close();
 							?>
 
-							<iframe id="videoDay" width="400" height="200" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
+							<iframe id="videoDay" width="100%" height="700" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
 			
 										      
-	    				</div>      
+	    				<!--</div>-->      
 					</div>      
 				</div>
 			</div>
@@ -212,7 +215,7 @@
 
 					<div class="fix">
 						<div class="col-md-4">
-							<?php
+							<!--<?php
 
 							//$con = mysqli_connect('127.0.0.1',"root","","techchat");
 							$servername = "us-cdbr-iron-east-04.cleardb.net";
@@ -241,6 +244,7 @@
 							$con->close();
 							?>
 
+
 							<iframe id="videoDay" width="400" height="200" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
 							<div
 								class="fb-like"
@@ -248,6 +252,8 @@
 								data-width="450"
 								data-show-faces="true">
 							</div>
+
+							-->
 							
 							
 						</div>
