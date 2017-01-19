@@ -14,9 +14,30 @@
 }
 
 div.social {
-	left: 1030px;
-	height: 2%;
-	width: 2%;
+	float: right;
+	margin-right: .02%;
+	height: 3%;
+	width: 3%;
+	display: inline;
+}
+
+.nav-container2 { 
+	width:940px; 
+	margin:auto; 
+	height:30px; 
+	position: relative; 
+	z-index: 1;
+}
+.social-media-list { 
+	width: 150px; 
+}
+.social-media-list li { 
+	display:block; 
+	float: right; 
+	width:33.3%; 
+	text-align: center; 
+	margin: 0 auto; 
+	padding-right: 10px;
 }
 
 body {
@@ -28,7 +49,7 @@ body {
 #videoDay {
 	box-shadow: 8px 8px 10px #aaa;
 	border-radius: 2%;
-	margin-top: -7.3%;
+	margin-top: -11%;
 }
 
 

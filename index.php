@@ -108,12 +108,23 @@
     
 	    
 	<!-- Page Content -->
+	
 	<!--<div class="jumbotron">-->
 		    <div class="container">
+		    <div class="nav-container2">
+			    <ul class="social-media-list">
+			        <li>
+			            <a class="socialEffect" href="https://www.instagram.com/techchat/?hl=en" target="_blank"><img src="./instagram.png" alt="instagram" /></a>
+			        </li>
+			        <li>
+			            <a class="socialEffect" href="https://www.facebook.com/techchatt/?ref=aymt_homepage_panel" target="_blank"><img src="./facebook.png" alt="facebook" /></a>
+			        </li>
+			        <li> 
+			            <a href="https://twitter.com/TechChatTX" target="_blank"><img src="./twitter.png" alt="twitter" /></a>
+			        </li>
+			    </ul>
+			</div>
 				<div class="row">
-					<div class="social">
-					<a href="https://www.instagram.com/techchat/?hl=en"><img src="./instagram.png" alt="instagram" /></a>
-					</div>
 					<div class="col-lg-12">
 						<!--<div class="wrap">-->
 							<!--<div class="type-wrap">
@@ -196,11 +207,6 @@
 								echo nl2br("\n");
 								echo $fetch['headline'];	
 								echo nl2br("\n");
-								echo '<div class="fb-like"';
-										echo 'data-share="true"';
-										echo 'data-width="450"';
-										echo 'data-show-faces="true">';
-								echo '</div>';
 							}
 						}
 						
