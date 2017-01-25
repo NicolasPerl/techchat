@@ -1,3 +1,78 @@
+<?php
+	include "mysqli_connection.php";
+	
+	$query = "SELECT COUNT(id) FROM news";
+	$result = $con->query($query);
+	$row = mysqli_fetch_row($result);
+
+	//Here we have the total row count
+	$rows = $row[0];
+	//this is the number of results we want displayed per page
+	$page_rows = 8;
+	//this tells us the page number of our last page
+	$last = ceil($rows/$page_rows);
+	//this makes sure $last can't be less than 1
+	if ($last < 1) {
+		$last = 1;
+	}
+	// establish the $pagenum variable
+	$pagenum = 1;
+	$dummy = $_GET['pn'];
+
+	//get pagenum from URL vars if it is present, else it is = 1
+	if (isset($_GET['pn'])) {
+		$pagenum = preg_replace('#[^0-9]#', '', $_GET['pn']);
+	}
+	// this makes sure the page number isn't below 1, or more than our $last page
+	if ($pagenum < 1) {
+		$pagenum = 1;
+	}
+	else if ($pagenum > $last) {
+		$pagenum = $last;
+	}
+	// sets the range of rows to query for the chosen $pagenum
+	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' . $page_rows;
+	//query just 1 page worth of rows by applying $limit
+	$query = "SELECT id, headline, media FROM news ORDER BY id DESC $limit";
+	$result = $con->query($query);
+	//shows the user what page they are on and the total number of pages
+	$textline1 = "Dummy (<b>$rows</b>)";
+	$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
+	//establish $pagination on Crtls variable
+	$paginationCtrls = '';
+	//if there is more then 1 page worth of results
+	if ($last != 1) {
+		// first we check if we are on page one. If we are then we don't need a link to the previous page or the first page so we do nothing. If we aren't then we generate links to the first page, and to the previous page.
+		if ($pagenum > 1) {
+			$previous = $pagenum - 1;
+			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$previous.'">Previous</a>';
+			//render clickable number links that should appear on the left of the target page number
+			for ($i = $pagenum-4; $i<$pagenum; $i++) {
+				if ($i > 0) {
+					$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> ';
+				}
+			}
+
+		}
+
+		// render the target page number without it being a link. Dead link.
+		$paginationCtrls .= ''.$pagenum;
+		//render clickable number links that would appear on the right
+		for ($i = $pagenum+1; $i <=$last; $i++) {
+			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a>';
+			if ($i >= $pagenum+4) {
+				break;
+			}
+		}
+		// shows the word next
+		if ($pagenum != $last) {
+			$next = $pagenum + 1;
+			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$next.'">Next</a> ';
+		}
+	}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,16 +215,7 @@
 						ini_set('display_errors',1); ini_set('display_startup_errors',1); 
 						error_reporting(-1);
 						
-						$servername = "us-cdbr-iron-east-04.cleardb.net";
-						$username = "b4c5e18a9ad6fa";
-						$password = "047e8b9d";
-						$dbname = "heroku_d3e06c073a5cf59";
-						//$con = mysqli_connect('127.0.0.1',"root","","techchat");
-						$con = mysqli_connect($servername,$username,$password,$dbname);
-
-						if (mysqli_connect_errno()) {
-							echo "Failed to connect to mysql: " . mysqli_connect_error();
-						}
+						include "mysqli_connection.php";
 
 						$query = "SELECT vidID FROM jumbotron ORDER BY id ASC";
 							//query the result and assign in to $result
@@ -166,7 +232,7 @@
 
 							//close the connection
 							$con->close();
-							?>
+						?>
 
 							<iframe id="videoDay" width="100%" height="700" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
 			
@@ -184,18 +250,9 @@
 					<div class="col-md-8">
 						<?php
 
-						// make the connection to the local server
-						//$con = mysqli_connect('127.0.0.1',"root","","techchat");
-						$servername = "us-cdbr-iron-east-04.cleardb.net";
-						$username = "b4c5e18a9ad6fa";
-						$password = "047e8b9d";
-						$dbname = "heroku_d3e06c073a5cf59";
-						$con = mysqli_connect($servername,$username,$password,$dbname);
-						if (mysqli_connect_errno()) {
-							echo "Failed to connect to mysql: " . mysqli_connect_error();
-						}
+						include "mysqli_connection.php";
 
-						$query = "SELECT id, headline, media FROM news ORDER BY id DESC";
+						$query = "SELECT id, headline, media FROM news ORDER BY id DESC $limit";
 						//query the result and assign in to $result
 						$result = $con->query($query);
 						//if the row is not empty
@@ -222,16 +279,6 @@
 					<div class="fix">
 						<div class="col-md-4">
 							<!--<?php
-
-							//$con = mysqli_connect('127.0.0.1',"root","","techchat");
-							$servername = "us-cdbr-iron-east-04.cleardb.net";
-							$username = "b4c5e18a9ad6fa";
-							$password = "047e8b9d";
-							$dbname = "heroku_d3e06c073a5cf59";
-							$con = mysqli_connect($servername,$username,$password,$dbname);
-							if (mysqli_connect_errno()) {
-								echo "Failed to connect to mysql: " . mysqli_connect_error();
-							}
 
 							$query = "SELECT vidID FROM videos ORDER BY id ASC";
 							//query the result and assign in to $result
@@ -266,6 +313,9 @@
 					</div>
 				</div>
 			</div>
+			<div>
+			    <div id = "pagination_controls"><?php echo $paginationCtrls; ?></div>
+			 </div>
 				<div class="footer">
 					<div class="row">
 						<div class="col-lg-12">

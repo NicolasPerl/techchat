@@ -31,6 +31,8 @@ div.social {
 .social-media-list { 
 	width: 150px; 
 }
+
+
 .social-media-list li { 
 	display:block; 
 	float: right; 
@@ -208,4 +210,25 @@ li {
             50% { opacity:0; }
             100% { opacity:1; }
  } 
+
+div#pagination_controls {
+	color: black;
+	font-size: 21px;
+	margin-left: 45%;
+	margin-top: 25px;
+}
+div#pagination_controls a { 
+	color: black;
+}
+div#pagination_controls a:hover {
+	color: orange;
+}
+div#pagination_controls a:visited {
+	color: grey;
+}
+
+
+
+
+
 
