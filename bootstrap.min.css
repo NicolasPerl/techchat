@@ -227,6 +227,9 @@ div#pagination_controls a:visited {
 	color: grey;
 }
 
+div.date {
+	font-size: 2px;
+}
 
 
 

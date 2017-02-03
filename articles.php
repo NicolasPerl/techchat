@@ -17,6 +17,17 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-90907253-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
@@ -29,18 +40,7 @@
 <div class="container">
 	<?php
 		
-		$imageID = intval( $_GET['image']);
-		
-		// make the connection to the local server
-		//$con = mysqli_connect('127.0.0.1',"root","","techchat");
-		$servername = "us-cdbr-iron-east-04.cleardb.net";
-		$username = "b4c5e18a9ad6fa";
-		$password = "047e8b9d";
-		$dbname = "heroku_d3e06c073a5cf59";
-		$con = mysqli_connect($servername,$username,$password,$dbname);
-		if (mysqli_connect_errno()) {
-			echo "Failed to connect to mysql: " . mysqli_connect_error();
-		}
+		include "mysqli_connection.php";
 
 		$query = "SELECT id, headline, media, story FROM news WHERE id = '$imageID'";
 		$result = $con->query($query);

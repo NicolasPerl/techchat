@@ -1,4 +1,5 @@
 <?php
+
 	include "mysqli_connection.php";
 	
 	$query = "SELECT COUNT(id) FROM news";
@@ -70,6 +71,8 @@
 			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$next.'">Next</a> ';
 		}
 	}
+	//close the connection
+	$con->close();
 ?>
 
 
@@ -149,24 +152,35 @@
 </head>
 
 <body>
-<!--Facebook API integration-->
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '224533154659650',
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-  };
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
+	  ga('create', 'UA-90907253-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+	<!--Facebook API integration-->
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '224533154659650',
+	      xfbml      : true,
+	      version    : 'v2.8'
+	    });
+	  };
+
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
 
 	<!--Connect to facebook -->
 	<div id="fb-root"></div>
@@ -252,7 +266,7 @@
 
 						include "mysqli_connection.php";
 
-						$query = "SELECT id, headline, media FROM news ORDER BY id DESC $limit";
+						$query = "SELECT id, headline, media,time_stamp FROM news ORDER BY id DESC $limit";
 						//query the result and assign in to $result
 						$result = $con->query($query);
 						//if the row is not empty
@@ -264,6 +278,11 @@
 								echo nl2br("\n");
 								echo $fetch['headline'];	
 								echo nl2br("\n");
+								echo nl2br("\n");
+								echo $fetch['time_stamp'];
+								echo nl2br("\n");
+
+
 							}
 						}
 						
@@ -310,11 +329,12 @@
 							
 							
 						</div>
-					</div>
+					</div>t
 				</div>
 			</div>
 			<div>
 			    <div id = "pagination_controls"><?php echo $paginationCtrls; ?></div>
+
 			 </div>
 				<div class="footer">
 					<div class="row">
