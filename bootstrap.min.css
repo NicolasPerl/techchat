@@ -51,9 +51,37 @@ body {
 #videoDay {
 	box-shadow: 8px 8px 10px #aaa;
 	border-radius: 2%;
-	margin-top: -11%;
+	
+	
 }
 
+#stories {
+	font-size: 3em;
+	text-align: center;
+	color: #444444;
+	padding-bottom: 10px;
+	border-bottom: 1px groove #d6d7d8;
+
+
+}
+
+#videos {
+	font-size: 3em;
+	text-align: center;
+	color: #444444;
+	padding-bottom: 10px;
+	border-bottom: 1px groove #d6d7d8;
+
+}
+
+#videoList {
+	box-shadow: 10px 10px 15px #aaa;
+	margin-top: 10%;
+	display: block;
+    margin-left: auto;
+    margin-right: auto 
+
+}
 
 div.fix {
 	position: relative;
@@ -73,21 +101,29 @@ img {
 	width: 100%;
 	height: 100%;
 	margin-top: -150px;
+
 }
 
 .post img {
-	width: 70%;
-	height: 70%;
-	box-shadow: 8px 8px 10px #aaa;
-	border-radius: 2%;
-	margin: 20px;
+	width: 100%;
+	height: 100%;
+	box-shadow: 10px 10px 15px #aaa;
+	margin-top: 10px;
+
+	
 }
 
 .headline {
-	color: blue;
+	color: #444444;
+	text-align: center;
+	font-size: 1.5em;
+	padding-bottom: 25px;
+	border-bottom: 1px groove #d6d7d8;
+	
+
 }
 
-
+/* --------------------------------------------- */
 
 #typed-strings {
 	position: absolute;

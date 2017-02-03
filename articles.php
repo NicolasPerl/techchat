@@ -42,7 +42,7 @@
 			echo "Failed to connect to mysql: " . mysqli_connect_error();
 		}
 
-		$query = "SELECT id, headline, media, story FROM news WHERE id = '$imageID'";
+		$query = "SELECT id, headline, story, media, time_stamp, tag FROM articles WHERE id = '$imageID'";
 		$result = $con->query($query);
 
 		if ($result->num_rows > 0) {

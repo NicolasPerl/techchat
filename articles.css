@@ -7,6 +7,7 @@ h1 {
 	text-align: center;
 	padding-left: 20%;
 	padding-right: 20%;
+	padding-top: 8%;
 }
 
 p {
@@ -27,6 +28,10 @@ p {
 }
 
 .article-pic {
-	width: 65%;
-	height: 65%;
+	position: relative;
+	width: 55%;
+	height: 55%;
+	margin-top: 2%;
+	box-shadow: 10px 10px 15px #444;
+
 }
