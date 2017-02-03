@@ -8,7 +8,7 @@
 	//Here we have the total row count
 	$rows = $row[0];
 	//this is the number of results we want displayed per page
-	$page_rows = 8;
+	$page_rows = 4;
 	//this tells us the page number of our last page
 	$last = ceil($rows/$page_rows);
 	//this makes sure $last can't be less than 1
@@ -33,7 +33,7 @@
 	// sets the range of rows to query for the chosen $pagenum
 	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' . $page_rows;
 	//query just 1 page worth of rows by applying $limit
-	$query = "SELECT id, headline, media FROM news ORDER BY id DESC $limit";
+	$query = "SELECT id, headline, media, time_stamp, tag FROM articles ORDER BY id DESC $limit";
 	$result = $con->query($query);
 	//shows the user what page they are on and the total number of pages
 	$textline1 = "Dummy (<b>$rows</b>)";
@@ -217,7 +217,7 @@
 						
 						include "mysqli_connection.php";
 
-						$query = "SELECT vidID FROM jumbotron ORDER BY id ASC";
+						$query = "SELECT vidID FROM videoday ORDER BY id DESC";
 							//query the result and assign in to $result
 							$result = $con->query($query);
 							//if the row is not empty
@@ -248,74 +248,82 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8">
+						<h1 id="stories"> Short Stories </h1>
 						<?php
 
 						include "mysqli_connection.php";
 
-						$query = "SELECT id, headline, media FROM news ORDER BY id DESC $limit";
+						$query = "SELECT id, headline, media, time_stamp, tag FROM articles ORDER BY id DESC $limit";
 						//query the result and assign in to $result
 						$result = $con->query($query);
 						//if the row is not empty
 						if ($result->num_rows > 0) {
 							while ($fetch=$result->fetch_assoc()) {
-								//click on article and it takes you to id in database. Convert image to binary code you can use
-								echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'" class="imgHover" /></a>';
-								//new line
-								echo nl2br("\n");
-								echo $fetch['headline'];	
-								echo nl2br("\n");
+								echo '<div class="col-md-6">';
+									//click on article and it takes you to id in database. Convert image to binary code you can use
+									/* echo '<h5 class="pull-left">'. $fetch["time_stamp"]. '</h5>'.'<h5 class="pull-right">'. $fetch["tag"]. '</h5>'; */
+									echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'" class="imgHover img-responsive center-block" /></a>';
+									//new line
+									echo nl2br("\n");
+									echo '<div class = "headline">';
+										echo $fetch['headline'];
+									echo '</div>';	
+									echo nl2br("\n");
+								echo '</div>';
 							}
 						}
 						
+						
 						//close the connection
 						$con->close();
-						?>
-						
-
-						
-			    		
+						?>	
 					</div>
+				
+				
 
-					<div class="fix">
-						<div class="col-md-4">
-							<!--<?php
+				
+				<div class="col-md-4">
+					<h1 id="videos"> Videos </h1>
+					<?php
 
-							$query = "SELECT vidID FROM videos ORDER BY id ASC";
-							//query the result and assign in to $result
-							$result = $con->query($query);
-							//if the row is not empty
+					include "mysqli_connection.php";
 
-							if ($result->num_rows > 0) {
-								while ($fetch=$result->fetch_assoc()) {
-									//convert array to string
-									$string_version = implode(',', $fetch);
-								}
-								
-							}
+					$query = "SELECT vidID, headline FROM videos ORDER BY id DESC";
+					//query the result and assign in to $result
+					$result = $con->query($query);
+					//if the row is not empty
 
-							//close the connection
-							$con->close();
-							?>
+					if ($result->num_rows > 0) {
+						while ($fetch=$result->fetch_assoc()) {
+							//convert array to string
+							$string_version = implode(',', $fetch);
+							echo '<iframe id="videoList" width="300" height="300" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
+							echo nl2br("\n");
+							echo '<div class = "headline">';
+								echo $fetch['headline'];
+							echo '</div>';	
+							echo nl2br("\n");
+						}
+						
+					}
 
+					//close the connection
+					$con->close();
+					?>
+					
 
-							<iframe id="videoDay" width="400" height="200" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
-							<div
-								class="fb-like"
-								data-share="true"
-								data-width="450"
-								data-show-faces="true">
-							</div>
+					
+					
 
-							-->
-							
-							
-						</div>
-					</div>
+					
+					
 				</div>
+				</div>
+				
 			</div>
 			<div>
 			    <div id = "pagination_controls"><?php echo $paginationCtrls; ?></div>
-			 </div>
+			</div>
 				<div class="footer">
 					<div class="row">
 						<div class="col-lg-12">
