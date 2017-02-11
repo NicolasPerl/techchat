@@ -9,7 +9,7 @@
 	//Here we have the total row count
 	$rows = $row[0];
 	//this is the number of results we want displayed per page
-	$page_rows = 8;
+	$page_rows = 4;
 	//this tells us the page number of our last page
 	$last = ceil($rows/$page_rows);
 	//this makes sure $last can't be less than 1
@@ -34,7 +34,7 @@
 	// sets the range of rows to query for the chosen $pagenum
 	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' . $page_rows;
 	//query just 1 page worth of rows by applying $limit
-	$query = "SELECT id, headline, media FROM news ORDER BY id DESC $limit";
+	$query = "SELECT id, headline, media, time_stamp, tag FROM articles ORDER BY id DESC $limit";
 	$result = $con->query($query);
 	//shows the user what page they are on and the total number of pages
 	$textline1 = "Dummy (<b>$rows</b>)";

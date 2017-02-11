@@ -42,7 +42,7 @@
 		
 		include "mysqli_connection.php";
 
-		$query = "SELECT id, headline, media, story FROM news WHERE id = '$imageID'";
+		$query = "SELECT id, headline, story, media, time_stamp, tag FROM articles WHERE id = '$imageID'";
 		$result = $con->query($query);
 
 		if ($result->num_rows > 0) {

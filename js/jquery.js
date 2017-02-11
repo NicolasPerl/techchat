@@ -5,16 +5,16 @@ if(k&&j[k]&&(e||j[k].data)||void 0!==d||"string"!=typeof b)return k||(k=i?a[h]=c
 
  // hover image for post zoom in and out
  $(document).ready(function(){
-       $('.imgHover').width(500);
+       $('.imgHover').width(300);
        $('.imgHover').mouseover(function()
        {
           $(this).css("cursor","pointer");
-          $(this).animate({width: "530px"}, 'slow');
+          $(this).animate({width: "300px"}, 'slow');
        });
     
     $('.imgHover').mouseout(function()
       {   
-          $(this).animate({width: "500px"}, 'slow');
+          $(this).animate({width: "300px"}, 'slow');
        });
    });
 
