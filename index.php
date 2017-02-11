@@ -457,7 +457,7 @@
 
 					include "mysqli_connection.php";
 
-					$query = "SELECT vidID, headline FROM videos ORDER BY id DESC";
+					$query = "SELECT vidID, headline FROM videoday ORDER BY id DESC";
 					//query the result and assign in to $result
 					$result = $con->query($query);
 					//if the row is not empty
