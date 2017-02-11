@@ -282,44 +282,43 @@
 				
 
 				
-				<div class="col-md-4">
-					<h1 id="videos"> Videos </h1>
-					<?php
+					<div class="col-md-4">
+						<h1 id="videos"> Videos </h1>
+						<?php
 
-					include "mysqli_connection.php";
+						include "mysqli_connection.php";
 
-					$query = "SELECT vidID, headline FROM videos ORDER BY id DESC";
-					//query the result and assign in to $result
-					$result = $con->query($query);
-					//if the row is not empty
+						$query = "SELECT vidID, headline FROM videos ORDER BY id DESC";
+						//query the result and assign in to $result
+						$result = $con->query($query);
+						//if the row is not empty
 
-					if ($result->num_rows > 0) {
-						while ($fetch=$result->fetch_assoc()) {
-							//convert array to string
-							$string_version = implode(',', $fetch);
-							echo '<iframe id="videoList" width="300" height="300" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
-							echo nl2br("\n");
-							echo '<div class = "headline">';
-								echo $fetch['headline'];
-							echo '</div>';	
-							echo nl2br("\n");
+						if ($result->num_rows > 0) {
+							while ($fetch=$result->fetch_assoc()) {
+								//convert array to string
+								$string_version = implode(',', $fetch);
+								echo '<iframe id="videoList" width="300" height="300" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
+								echo nl2br("\n");
+								echo '<div class = "headline">';
+									echo $fetch['headline'];
+								echo '</div>';	
+								echo nl2br("\n");
+							}
+							
 						}
+
+						//close the connection
+						$con->close();
+						?>
 						
-					}
 
-					//close the connection
-					$con->close();
-					?>
-					
+						
+						
 
-					
-					
-
-					
-					
+						
+						
+					</div>
 				</div>
-				</div>
-				
 			</div>
 			<div>
 			    <div id = "pagination_controls"><?php echo $paginationCtrls; ?></div>
