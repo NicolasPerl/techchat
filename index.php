@@ -2,14 +2,14 @@
 
 	include "mysqli_connection.php";
 	
-	$query = "SELECT COUNT(id) FROM news";
+	$query = "SELECT COUNT(id) FROM articles";
 	$result = $con->query($query);
 	$row = mysqli_fetch_row($result);
 
 	//Here we have the total row count
 	$rows = $row[0];
 	//this is the number of results we want displayed per page
-	$page_rows = 4;
+	$page_rows = 2;
 	//this tells us the page number of our last page
 	$last = ceil($rows/$page_rows);
 	//this makes sure $last can't be less than 1
@@ -356,17 +356,31 @@
 	<!--<div class="jumbotron">-->
 		    <div class="container">
 		    <div class="nav-container2">
-			    <ul class="social-media-list">
-			        <li>
-			            <a class="socialEffect" href="https://www.instagram.com/techchat/?hl=en" target="_blank"><img src="./instagram.png" alt="instagram" /></a>
-			        </li>
-			        <li>
-			            <a class="socialEffect" href="https://www.facebook.com/techchatt/?ref=aymt_homepage_panel" target="_blank"><img src="./facebook.png" alt="facebook" /></a>
-			        </li>
-			        <li> 
-			            <a href="https://twitter.com/TechChatTX" target="_blank"><img src="./twitter.png" alt="twitter" /></a>
-			        </li>
-			    </ul>
+		    	<div class="row">
+		    		<div class="col-lg-3">
+		    			<img src="./TechChatLogo.png" alt="logo" class="tc_logo pull-left"/>
+		    		</div>
+
+		    		<div class="col-lg-6">
+		    			
+		    		</div>
+
+		    		<div class="col-lg-3">
+					    <ul class="social-media-list pull-right">
+					        <li>
+					            <a class="socialEffect" href="https://www.instagram.com/techchat/?hl=en" target="_blank"><img src="./instagram.png" alt="instagram" /></a>
+					        </li>
+					        <li>
+					            <a class="socialEffect" href="https://www.facebook.com/techchatt/?ref=aymt_homepage_panel" target="_blank"><img src="./facebook.png" alt="facebook" /></a>
+					        </li>
+					        <li> 
+					            <a href="https://twitter.com/TechChatTX" target="_blank"><img src="./twitter.png" alt="twitter" /></a>
+					        </li>
+					    </ul>
+					</div>
+
+				    
+				</div>
 			</div>
 				<div class="row">
 					<div class="col-lg-12">
@@ -386,7 +400,7 @@
 						
 						include "mysqli_connection.php";
 
-						$query = "SELECT vidID FROM videoday ORDER BY id DESC";
+						$query = "SELECT vidID FROM videoDay ORDER BY id DESC";
 							//query the result and assign in to $result
 							$result = $con->query($query);
 							//if the row is not empty
@@ -395,6 +409,7 @@
 								while ($fetch=$result->fetch_assoc()) {
 									//convert array to string
 									$string_version = implode(',', $fetch);
+									
 								}
 								
 							}
@@ -422,7 +437,7 @@
 
 						include "mysqli_connection.php";
 
-						$query = "SELECT id, headline, media, time_stamp, tag FROM articles ORDER BY id DESC $limit";
+						$query = "SELECT id, headline, media, article_date, time_to_read, tag FROM articles ORDER BY id DESC $limit";
 						//query the result and assign in to $result
 						$result = $con->query($query);
 						//if the row is not empty
@@ -430,7 +445,7 @@
 							while ($fetch=$result->fetch_assoc()) {
 								echo '<div class="col-md-6">';
 									//click on article and it takes you to id in database. Convert image to binary code you can use
-									/* echo '<h5 class="pull-left">'. $fetch["time_stamp"]. '</h5>'.'<h5 class="pull-right">'. $fetch["tag"]. '</h5>'; */
+									echo '<h5 class="pull-left time_to_read">'. $fetch["time_to_read"]. '</h5>'.'<h5 class="pull-right article_date">'. $fetch["article_date"]. '</h5>'; 
 									echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'" class="imgHover img-responsive center-block" /></a>';
 									//new line
 									echo nl2br("\n");
@@ -457,7 +472,7 @@
 
 						include "mysqli_connection.php";
 
-						$query = "SELECT vidID, headline FROM videos ORDER BY id DESC";
+						$query = "SELECT id, headline, vidID, video_date, time_to_watch FROM videos ORDER BY id DESC";
 						//query the result and assign in to $result
 						$result = $con->query($query);
 						//if the row is not empty
@@ -466,7 +481,8 @@
 							while ($fetch=$result->fetch_assoc()) {
 								//convert array to string
 								$string_version = implode(',', $fetch);
-								echo '<iframe id="videoList" width="300" height="300" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
+								echo '<h5 class="pull-left time_to_watch">'. $fetch["time_to_watch"]. '</h5>'.'<h5 class="pull-right video_date">'. $fetch["video_date"]. '</h5>'; 
+								echo '<iframe id="videoList" width="300" height="300" src="https://www.youtube.com/embed/'. $fetch["vidID"].'?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
 								echo nl2br("\n");
 								echo '<div class = "headline">';
 									echo $fetch['headline'];
@@ -502,8 +518,11 @@
 									<li class="about"><a href="#">Tech Tips</a></li>
 									<!--<li class="about"><a href="#">Advertise With Us</a></li>-->
 								</ul>
+					
 
 								<p>Copyright &#169 TechChat Network Inc. All rights reserved</p>
+
+								
 							</footer>
 						</div>
 					</div>
