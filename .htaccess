@@ -1,0 +1,7 @@
+<ifModule mod_rewrite.c>
+Test.
+
+DirectoryIndex index.php index.html index.htm
+
+</ifModule>
+
