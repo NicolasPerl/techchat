@@ -9,7 +9,7 @@
 	//Here we have the total row count
 	$rows = $row[0];
 	//this is the number of results we want displayed per page
-	$page_rows = 4;
+	$page_rows = 16;
 	//this tells us the page number of our last page
 	$last = ceil($rows/$page_rows);
 	//this makes sure $last can't be less than 1
@@ -289,6 +289,7 @@
 	<!-- Page Content -->
 	
 	<!--<div class="jumbotron">-->
+		<!--
 		    <div class="container">
 		    <div class="nav-container2">
 			    <ul class="social-media-list">
@@ -330,13 +331,26 @@
 								while ($fetch=$result->fetch_assoc()) {
 									//convert array to string
 									$string_version = implode(',', $fetch);
+
 								}
-								
 							}
 
 							//close the connection
 							$con->close();
 						?>
+						<div class="nav-container2">
+						    <ul class="social-media-list">
+						        <li>
+						            <a class="socialEffect" href="https://www.instagram.com/techchat/?hl=en" target="_blank"><img src="./instagram.png" alt="instagram" /></a>
+						        </li>
+						        <li>
+						            <a class="socialEffect" href="https://www.facebook.com/techchatt/?ref=aymt_homepage_panel" target="_blank"><img src="./facebook.png" alt="facebook" /></a>
+						        </li>
+						        <li> 
+						            <a href="https://twitter.com/TechChatTX" target="_blank"><img src="./twitter.png" alt="twitter" /></a>
+						        </li>
+						    </ul>
+						</div>
 
 							<iframe id="videoDay" width="100%" height="700" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
 			
@@ -357,7 +371,7 @@
 
 						include "mysqli_connection.php";
 
-						$query = "SELECT id, headline, media, time_stamp, tag FROM articles ORDER BY id DESC $limit";
+						$query = "SELECT id, headline, media FROM articles ORDER BY id DESC $limit";
 						//query the result and assign in to $result
 						$result = $con->query($query);
 						//if the row is not empty
@@ -373,6 +387,7 @@
 										echo $fetch['headline'];
 									echo '</div>';	
 									echo nl2br("\n");
+									
 								echo '</div>';
 							}
 						}
@@ -392,39 +407,28 @@
 
 						include "mysqli_connection.php";
 
-						$query = "SELECT vidID FROM videos ORDER BY id DESC";
-						$secondQuery = "SELECT headline FROM videos ORDER BY id DESC";
+						$query = "SELECT vidID FROM videos ORDER BY id DESC $limit";
+						$secondQuery = "SELECT headline FROM videos ORDER BY id DESC $limit";
+
 						//query the result and assign in to $result
 						$result = $con->query($query);
-						$secondResult = $con->query($secondQuery);
+						$result2 = $con->query($secondQuery);
+
 						//if the row is not empty
 
 						if ($result->num_rows > 0) {
 							while ($fetch=$result->fetch_assoc()) {
 								//convert array to string
 								$string_version = implode(',', $fetch);
-								echo '<iframe id="videoList" width="300" height="300" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
+								echo '<iframe id="videoList" width="300" height="300" src="https://www.youtube.com/embed/'. $string_version. '?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
 								echo nl2br("\n");
-								echo '<div class = "headline">';
-									echo $fetch['headline'];
-								echo '</div>';	
-								echo nl2br("\n");
-							}
-						}
-							
-						if ($result->num_rows > 0) {
-							while ($fetch1=$secondResult->fetch_assoc()) {
-								//convert array to string
-								
-								
-								echo nl2br("\n");
-								echo '<div class = "headline">';
-									echo $fetch1['headline'];
-								echo '</div>';	
+								$fetchH = $result2->fetch_assoc();
+								$string_versionH = implode(',', $fetchH);
+								echo $string_versionH;
 								echo nl2br("\n");
 							}
 						}
-
+	
 						//close the connection
 						$con->close();
 						?>
