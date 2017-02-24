@@ -168,6 +168,10 @@ p {
 	font-size: 14px;
 }
 
+label {
+	color: black;
+}
+
 a:hover {
 	color: grey;	
 	text-decoration: none;

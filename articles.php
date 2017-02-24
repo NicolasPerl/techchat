@@ -39,15 +39,16 @@
 
 <div class="container">
 	<?php
-		
+		$imageID = intval( $_GET["image"]);
+
 		include "mysqli_connection.php";
 
-		$query = "SELECT id, headline, story, media, time_stamp, tag FROM articles WHERE id = '$imageID'";
+		$query = "SELECT id, headline, story, media FROM articles WHERE id = '$imageID'";
 		$result = $con->query($query);
 
+		
 		if ($result->num_rows > 0) {
-
-
+	
 			while ($fetch=$result->fetch_assoc()) {
 				//var_dump($fetch);
 				echo '<h1>'.$fetch['headline'].'</h1>';

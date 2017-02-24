@@ -5,11 +5,13 @@
 	$query = "SELECT COUNT(id) FROM articles";
 	$result = $con->query($query);
 	$row = mysqli_fetch_row($result);
-
+	
 	//Here we have the total row count
 	$rows = $row[0];
 	//this is the number of results we want displayed per page
-	$page_rows = 16;
+	$page_rows = 8;
+	// this is the number of videos displayed per page
+	$vid_per_page = $page_rows / 2;
 	//this tells us the page number of our last page
 	$last = ceil($rows/$page_rows);
 	//this makes sure $last can't be less than 1
@@ -19,6 +21,7 @@
 	// establish the $pagenum variable
 	$pagenum = 1;
 	$dummy = $_GET['pn'];
+
 
 	//get pagenum from URL vars if it is present, else it is = 1
 	if (isset($_GET['pn'])) {
@@ -33,9 +36,14 @@
 	}
 	// sets the range of rows to query for the chosen $pagenum
 	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' . $page_rows;
+	//vidID $limit per page
+	$limitvidID = 'LIMIT ' .($pagenum - 1) * $vid_per_page .',' . $vid_per_page;
+	
 	//query just 1 page worth of rows by applying $limit
-	$query = "SELECT id, headline, media, time_stamp, tag FROM articles ORDER BY id DESC $limit";
-	$result = $con->query($query);
+	//$query = "SELECT id, headline, media, time_stamp, tag FROM articles ORDER BY id DESC $limit";
+	//$result = $con->query($query);
+	
+
 	//shows the user what page they are on and the total number of pages
 	$textline1 = "Dummy (<b>$rows</b>)";
 	$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
@@ -374,6 +382,7 @@
 						$query = "SELECT id, headline, media FROM articles ORDER BY id DESC $limit";
 						//query the result and assign in to $result
 						$result = $con->query($query);
+						
 						//if the row is not empty
 						if ($result->num_rows > 0) {
 							while ($fetch=$result->fetch_assoc()) {
@@ -407,8 +416,9 @@
 
 						include "mysqli_connection.php";
 
-						$query = "SELECT vidID FROM videos ORDER BY id DESC $limit";
-						$secondQuery = "SELECT headline FROM videos ORDER BY id DESC $limit";
+						
+						$query = "SELECT vidID FROM videos ORDER BY id DESC $limitvidID";
+						$secondQuery = "SELECT headline FROM videos ORDER BY id DESC $limitvidID";
 
 						//query the result and assign in to $result
 						$result = $con->query($query);
