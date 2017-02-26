@@ -40,10 +40,13 @@
 <div class="container">
 	<?php
 		
+		$imageID = intval($_GET["image"]);
+		
 		include "mysqli_connection.php";
 
-		$query = "SELECT id, headline, story, media, time_stamp, tag FROM articles WHERE id = '$imageID'";
+		$query = "SELECT id, headline, story, media, tag FROM articles WHERE id = '$imageID'";
 		$result = $con->query($query);
+		
 
 		if ($result->num_rows > 0) {
 
