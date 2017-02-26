@@ -346,19 +346,7 @@
 							//close the connection
 							$con->close();
 						?>
-						<div class="nav-container2">
-						    <ul class="social-media-list">
-						        <li>
-						            <a class="socialEffect" href="https://www.instagram.com/techchat/?hl=en" target="_blank"><img src="./instagram.png" alt="instagram" /></a>
-						        </li>
-						        <li>
-						            <a class="socialEffect" href="https://www.facebook.com/techchatt/?ref=aymt_homepage_panel" target="_blank"><img src="./facebook.png" alt="facebook" /></a>
-						        </li>
-						        <li> 
-						            <a href="https://twitter.com/TechChatTX" target="_blank"><img src="./twitter.png" alt="twitter" /></a>
-						        </li>
-						    </ul>
-						</div>
+						
 
 							<iframe id="videoDay" width="100%" height="700" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
 			
@@ -459,11 +447,24 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<footer>
+							<div class="nav-container2">
+						    <ul class="social-media-list">
+						        <li>
+						            <a class="socialEffect" href="https://www.instagram.com/techchat/?hl=en" target="_blank"><img src="./instagram.png" alt="instagram" /></a>
+						        </li>
+						        <li>
+						            <a class="socialEffect" href="https://www.facebook.com/techchatt/?ref=aymt_homepage_panel" target="_blank"><img src="./facebook.png" alt="facebook" /></a>
+						        </li>
+						        <li> 
+						            <a href="https://twitter.com/TechChatTX" target="_blank"><img src="./twitter.png" alt="twitter" /></a>
+						        </li>
+						    </ul>
+						</div>
 								<ul style="list-style-type: none">
 									<li class="about"><a href="./contacts.html">Contact Us</a></li>
-									<li class="about"><a href="#">Work With Us</a></li>
+									<!--<li class="about"><a href="#">Work With Us</a></li>
 									<li class="about"><a href="#">Tech Tips</a></li>
-									<!--<li class="about"><a href="#">Advertise With Us</a></li>-->
+									<li class="about"><a href="#">Advertise With Us</a></li>-->
 								</ul>
 
 								<p>Copyright &#169 TechChat Network Inc. All rights reserved</p>

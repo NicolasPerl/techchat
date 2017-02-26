@@ -27,9 +27,11 @@ div.social {
 	height:30px; 
 	position: relative; 
 	z-index: 1;
+	margin-right: -750px; 
 }
 .social-media-list { 
-	width: 150px; 
+	width: 150px;
+
 }
 
 
@@ -116,7 +118,7 @@ img {
 .headline {
 	color: #444444;
 	text-align: center;
-	font-size: 1.5em;
+	font-size: 1.25em;
 	padding-bottom: 25px;
 	border-bottom: 1px groove #d6d7d8;
 	
