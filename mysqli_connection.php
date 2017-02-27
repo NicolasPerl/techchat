@@ -7,7 +7,6 @@
 	$dbname = "heroku_d3e06c073a5cf59";
 	$con = mysqli_connect($servername,$username,$password,$dbname);
 
-
 	//$con = mysqli_connect('127.0.0.1',"root","","techchat");
 
  ?>
