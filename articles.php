@@ -45,12 +45,13 @@
 		include "mysqli_connection.php";
 
 		$query = "SELECT id, headline, story, media, tag FROM articles WHERE id = '$imageID'";
+
 		$result = $con->query($query);
 		
 
+		
 		if ($result->num_rows > 0) {
-
-
+	
 			while ($fetch=$result->fetch_assoc()) {
 				//var_dump($fetch);
 				echo '<h1>'.$fetch['headline'].'</h1>';
@@ -58,6 +59,11 @@
 				echo '<img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'" class="article-pic img-rounded center-block img-responsive" />';
 				echo "<br>";
 				echo '<p>'.$fetch['story'].'</p>';
+				//echo '<div class="container">';
+				//echo '<div class="fb-like" data-href="https://www.facebook.com/techchatt/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="true"></div>';
+				//echo '<div class="fb-comments"  data-href="http://localhost:8000/articles.php?image=2" data-numposts="5"></div>';
+				//echo '</div>';
+
 
 				
 		}
@@ -67,13 +73,18 @@
 		//close the connection
 		$con->close();
 	?>
+		<div id="vc-feelback-main" data-access-token="e19b6dd7c6280593df3d12c7d068ca87" data-display-type="4"></div> 
 
+		<script> 
+		(function() { 
+		var v = document.createElement('script'); v.async = true; 
+		v.src = "http://assets-prod.vicomi.com/vicomi.js"; 
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(v, s); 
+		})(); 
+		</script>
 <br>
 <br>
-<div class="container">
-	<div class="fb-like" data-href="https://www.facebook.com/techchatt/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="true"></div>
-	<div class="fb-comments"  data-href="http://localhost:8000/articles.php?image=2" data-numposts="5"></div>
-</div>
+
 
 </div>
 </body>

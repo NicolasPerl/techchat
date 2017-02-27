@@ -5,11 +5,14 @@
 	$query = "SELECT COUNT(id) FROM articles";
 	$result = $con->query($query);
 	$row = mysqli_fetch_row($result);
-
+	
 	//Here we have the total row count
 	$rows = $row[0];
 	//this is the number of results we want displayed per page
-	$page_rows = 2;
+	$page_rows = 8;
+	// this is the number of videos displayed per page
+	$vid_per_page = $page_rows / 2;
+
 	//this tells us the page number of our last page
 	$last = ceil($rows/$page_rows);
 	//this makes sure $last can't be less than 1
@@ -19,6 +22,7 @@
 	// establish the $pagenum variable
 	$pagenum = 1;
 	$dummy = $_GET['pn'];
+
 
 	//get pagenum from URL vars if it is present, else it is = 1
 	if (isset($_GET['pn'])) {
@@ -33,9 +37,14 @@
 	}
 	// sets the range of rows to query for the chosen $pagenum
 	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' . $page_rows;
+	//vidID $limit per page
+	$limitvidID = 'LIMIT ' .($pagenum - 1) * $vid_per_page .',' . $vid_per_page;
+	
 	//query just 1 page worth of rows by applying $limit
-	$query = "SELECT id, headline, media, time_stamp, tag FROM articles ORDER BY id DESC $limit";
-	$result = $con->query($query);
+	//$query = "SELECT id, headline, media, time_stamp, tag FROM articles ORDER BY id DESC $limit";
+	//$result = $con->query($query);
+	
+
 	//shows the user what page they are on and the total number of pages
 	$textline1 = "Dummy (<b>$rows</b>)";
 	$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
@@ -46,12 +55,15 @@
 		// first we check if we are on page one. If we are then we don't need a link to the previous page or the first page so we do nothing. If we aren't then we generate links to the first page, and to the previous page.
 		if ($pagenum > 1) {
 			$previous = $pagenum - 1;
-			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$previous.'">Previous</a>';
+			//$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$previous.'">Previous</a>';
+			$paginationCtrls .= '<a href="index.php?pn='.$previous.'">Previous</a>';
 			//render clickable number links that should appear on the left of the target page number
 			for ($i = $pagenum-4; $i<$pagenum; $i++) {
 				if ($i > 0) {
-					$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> ';
+					//$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> ';
+					$paginationCtrls .= '<a href="index.php?pn='.$i.'">'.$i.'</a> ';
 				}
+				
 			}
 
 		}
@@ -60,7 +72,9 @@
 		$paginationCtrls .= ''.$pagenum;
 		//render clickable number links that would appear on the right
 		for ($i = $pagenum+1; $i <=$last; $i++) {
-			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a>';
+			//$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a>';
+			$paginationCtrls .= '<a href="index.php?pn='.$i.'">'.$i.'</a>';
+
 			if ($i >= $pagenum+4) {
 				break;
 			}
@@ -68,7 +82,12 @@
 		// shows the word next
 		if ($pagenum != $last) {
 			$next = $pagenum + 1;
+			/*
 			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$next.'">Next</a> ';
+			*/
+			$paginationCtrls .= '<a href="index.php?pn='.$next.'">Next</a> ';
+
+			
 		}
 	}
 	//close the connection
@@ -154,81 +173,6 @@
 <body>
 
 
-
-
-<?php
-	include "mysqli_connection.php";
-	
-	$query = "SELECT COUNT(id) FROM news";
-	$result = $con->query($query);
-	$row = mysqli_fetch_row($result);
-
-	//Here we have the total row count
-	$rows = $row[0];
-	//this is the number of results we want displayed per page
-	$page_rows = 4;
-	//this tells us the page number of our last page
-	$last = ceil($rows/$page_rows);
-	//this makes sure $last can't be less than 1
-	if ($last < 1) {
-		$last = 1;
-	}
-	// establish the $pagenum variable
-	$pagenum = 1;
-	$dummy = $_GET['pn'];
-
-	//get pagenum from URL vars if it is present, else it is = 1
-	if (isset($_GET['pn'])) {
-		$pagenum = preg_replace('#[^0-9]#', '', $_GET['pn']);
-	}
-	// this makes sure the page number isn't below 1, or more than our $last page
-	if ($pagenum < 1) {
-		$pagenum = 1;
-	}
-	else if ($pagenum > $last) {
-		$pagenum = $last;
-	}
-	// sets the range of rows to query for the chosen $pagenum
-	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' . $page_rows;
-	//query just 1 page worth of rows by applying $limit
-	$query = "SELECT id, headline, media, time_stamp, tag FROM articles ORDER BY id DESC $limit";
-	$result = $con->query($query);
-	//shows the user what page they are on and the total number of pages
-	$textline1 = "Dummy (<b>$rows</b>)";
-	$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
-	//establish $pagination on Crtls variable
-	$paginationCtrls = '';
-	//if there is more then 1 page worth of results
-	if ($last != 1) {
-		// first we check if we are on page one. If we are then we don't need a link to the previous page or the first page so we do nothing. If we aren't then we generate links to the first page, and to the previous page.
-		if ($pagenum > 1) {
-			$previous = $pagenum - 1;
-			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$previous.'">Previous</a>';
-			//render clickable number links that should appear on the left of the target page number
-			for ($i = $pagenum-4; $i<$pagenum; $i++) {
-				if ($i > 0) {
-					$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> ';
-				}
-			}
-
-		}
-
-		// render the target page number without it being a link. Dead link.
-		$paginationCtrls .= ''.$pagenum;
-		//render clickable number links that would appear on the right
-		for ($i = $pagenum+1; $i <=$last; $i++) {
-			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a>';
-			if ($i >= $pagenum+4) {
-				break;
-			}
-		}
-		// shows the word next
-		if ($pagenum != $last) {
-			$next = $pagenum + 1;
-			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$next.'">Next</a> ';
-		}
-	}
-?>
 
 
 <!DOCTYPE html>
@@ -354,6 +298,7 @@
 	<!-- Page Content -->
 	
 	<!--<div class="jumbotron">-->
+		<!--
 		    <div class="container">
 		    <div class="nav-container2">
 		    	<div class="row">
@@ -409,14 +354,14 @@
 								while ($fetch=$result->fetch_assoc()) {
 									//convert array to string
 									$string_version = implode(',', $fetch);
-									
+
 								}
-								
 							}
 
 							//close the connection
 							$con->close();
 						?>
+						
 
 							<iframe id="videoDay" width="100%" height="700" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
 			
@@ -437,9 +382,12 @@
 
 						include "mysqli_connection.php";
 
+
 						$query = "SELECT id, headline, media, article_date, time_to_read, tag FROM articles ORDER BY id DESC $limit";
+
 						//query the result and assign in to $result
 						$result = $con->query($query);
+						
 						//if the row is not empty
 						if ($result->num_rows > 0) {
 							while ($fetch=$result->fetch_assoc()) {
@@ -453,6 +401,7 @@
 										echo $fetch['headline'];
 									echo '</div>';	
 									echo nl2br("\n");
+									
 								echo '</div>';
 							}
 						}
@@ -472,26 +421,35 @@
 
 						include "mysqli_connection.php";
 
-						$query = "SELECT id, headline, vidID, video_date, time_to_watch FROM videos ORDER BY id DESC";
+
+						
+						
+						$query = "SELECT id, headline, vidID, video_date, time_to_watch FROM videos ORDER BY id DESC $limitvidID";
+						$secondQuery = "SELECT headline FROM videos ORDER BY id DESC $limitvidID";
+
+
 						//query the result and assign in to $result
 						$result = $con->query($query);
+						$result2 = $con->query($secondQuery);
+
 						//if the row is not empty
 
 						if ($result->num_rows > 0) {
 							while ($fetch=$result->fetch_assoc()) {
 								//convert array to string
 								$string_version = implode(',', $fetch);
+
 								echo '<h5 class="pull-left time_to_watch">'. $fetch["time_to_watch"]. '</h5>'.'<h5 class="pull-right video_date">'. $fetch["video_date"]. '</h5>'; 
 								echo '<iframe id="videoList" width="300" height="300" src="https://www.youtube.com/embed/'. $fetch["vidID"].'?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
+
 								echo nl2br("\n");
-								echo '<div class = "headline">';
-									echo $fetch['headline'];
-								echo '</div>';	
+								$fetchH = $result2->fetch_assoc();
+								$string_versionH = implode(',', $fetchH);
+								echo $string_versionH;
 								echo nl2br("\n");
 							}
-							
 						}
-
+	
 						//close the connection
 						$con->close();
 						?>
@@ -512,11 +470,24 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<footer>
+							<div class="nav-container2">
+						    <ul class="social-media-list">
+						        <li>
+						            <a class="socialEffect" href="https://www.instagram.com/techchat/?hl=en" target="_blank"><img src="./instagram.png" alt="instagram" /></a>
+						        </li>
+						        <li>
+						            <a class="socialEffect" href="https://www.facebook.com/techchatt/?ref=aymt_homepage_panel" target="_blank"><img src="./facebook.png" alt="facebook" /></a>
+						        </li>
+						        <li> 
+						            <a href="https://twitter.com/TechChatTX" target="_blank"><img src="./twitter.png" alt="twitter" /></a>
+						        </li>
+						    </ul>
+						</div>
 								<ul style="list-style-type: none">
 									<li class="about"><a href="./contacts.html">Contact Us</a></li>
-									<li class="about"><a href="#">Work With Us</a></li>
+									<!--<li class="about"><a href="#">Work With Us</a></li>
 									<li class="about"><a href="#">Tech Tips</a></li>
-									<!--<li class="about"><a href="#">Advertise With Us</a></li>-->
+									<li class="about"><a href="#">Advertise With Us</a></li>-->
 								</ul>
 					
 

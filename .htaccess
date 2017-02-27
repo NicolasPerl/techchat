@@ -1,0 +1,13 @@
+<ifModule mod_rewrite.c>
+RewriteEngine on
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+RewriteRule ^news/([0-9]+)/?$ index.php?pn=$1 [NC]
+
+
+</ifModule>
+
