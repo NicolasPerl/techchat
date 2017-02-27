@@ -298,38 +298,28 @@
 	<!-- Page Content -->
 	
 	<!--<div class="jumbotron">-->
-		<!--
+		
 		    <div class="container">
-		    <div class="nav-container2">
-		    	<div class="row">
-		    		<div class="col-lg-3">
-		    			<img src="./TechChatLogo.png" alt="logo" class="tc_logo pull-left"/>
-		    		</div>
+			    <div class="nav-container2">
+			    	<div class="row">
+			    		<div class="col-md-3">
+			    			<img src="./TechChatLogo.png" alt="logo" class="tc_logo"/>
+			    		</div>
+			
+			    		<div class="col-md-9 mission">
+			    			<h2> Stay updated on modern tech! </h2>
+			    		</div>
 
-		    		<div class="col-lg-6">
-		    			
-		    		</div>
 
-		    		<div class="col-lg-3">
-					    <ul class="social-media-list pull-right">
-					        <li>
-					            <a class="socialEffect" href="https://www.instagram.com/techchat/?hl=en" target="_blank"><img src="./instagram.png" alt="instagram" /></a>
-					        </li>
-					        <li>
-					            <a class="socialEffect" href="https://www.facebook.com/techchatt/?ref=aymt_homepage_panel" target="_blank"><img src="./facebook.png" alt="facebook" /></a>
-					        </li>
-					        <li> 
-					            <a href="https://twitter.com/TechChatTX" target="_blank"><img src="./twitter.png" alt="twitter" /></a>
-					        </li>
-					    </ul>
-					</div>
-
-				    
+					</div>      
 				</div>
 			</div>
+
+				    
+			<!--	
 				<div class="row">
 					<div class="col-lg-12">
-						<!--<div class="wrap">-->
+						<div class="wrap">-->
 							<!--<div class="type-wrap">
 						        <div id="typed-strings">
 						            <span>Stay <strong>updated</strong> on modern tech</span>
@@ -339,6 +329,7 @@
 						        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; bottom: 430px; font-size: 300%; color: white; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 150px;"></span>
 						    </div>
 						</div>-->
+			
 						<?php 
 						ini_set('display_errors',1); ini_set('display_startup_errors',1); 
 						error_reporting(-1);
@@ -367,9 +358,7 @@
 			
 										      
 	    				<!--</div>-->      
-					</div>      
-				</div>
-			</div>
+					
 
 	<!--</div>-->
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -394,7 +383,7 @@
 								echo '<div class="col-md-6">';
 									//click on article and it takes you to id in database. Convert image to binary code you can use
 									echo '<h5 class="pull-left time_to_read">'. $fetch["time_to_read"]. '</h5>'.'<h5 class="pull-right article_date">'. $fetch["article_date"]. '</h5>'; 
-									echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'" class="imgHover img-responsive center-block" /></a>';
+									echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'" class="article img-responsive center-block" /></a>';
 									//new line
 									echo nl2br("\n");
 									echo '<div class = "headline">';
@@ -436,17 +425,22 @@
 
 						if ($result->num_rows > 0) {
 							while ($fetch=$result->fetch_assoc()) {
-								//convert array to string
-								$string_version = implode(',', $fetch);
+								echo '<div class="col-md-12">';
 
-								echo '<h5 class="pull-left time_to_watch">'. $fetch["time_to_watch"]. '</h5>'.'<h5 class="pull-right video_date">'. $fetch["video_date"]. '</h5>'; 
-								echo '<iframe id="videoList" width="300" height="300" src="https://www.youtube.com/embed/'. $fetch["vidID"].'?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
+									//convert array to string
+									$string_version = implode(',', $fetch);
 
-								echo nl2br("\n");
-								$fetchH = $result2->fetch_assoc();
-								$string_versionH = implode(',', $fetchH);
-								echo $string_versionH;
-								echo nl2br("\n");
+									echo '<h5 class="pull-left time_to_watch">'. $fetch["time_to_watch"]. '</h5>'.'<h5 class="pull-right video_date">'. $fetch["video_date"]. '</h5>'; 
+									echo '<iframe id="videoList" width="300" height="300" src="https://www.youtube.com/embed/'. $fetch["vidID"].'?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
+
+									echo nl2br("\n");
+									$fetchH = $result2->fetch_assoc();
+									$string_versionH = implode(',', $fetchH);
+									echo '<div class = "headline">';
+										echo $string_versionH;
+									echo '</div>';
+									echo nl2br("\n");
+								echo '</div>';
 							}
 						}
 	
@@ -459,11 +453,12 @@
 						
 
 						
-						
+							
 					</div>
 				</div>
 			</div>
 			<div>
+		</div>
 			    <div id = "pagination_controls"><?php echo $paginationCtrls; ?></div>
 			</div>
 				<div class="footer">
@@ -498,7 +493,7 @@
 						</div>
 					</div>
 				</div>
-		</div>
+		
 
 	    
 	
