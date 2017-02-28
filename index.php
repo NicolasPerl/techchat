@@ -361,7 +361,13 @@
 							//close the connection
 							$con->close();
 						?>
-						
+							<form action="email.php" method="post" class="form-inline">
+							  <div class="form-group">
+							    <label for="exampleInputEmail2">Email</label>
+							    <input type="email" name="emails" class="form-control" id="exampleInputEmail2" placeholder="techchat@example.com">
+							  </div>
+							  <button type="submit" class="btn btn-default">I do want to get smarter</button>
+							</form>
 
 							<iframe id="videoDay" width="100%" height="700" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
 			
