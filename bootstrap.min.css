@@ -39,7 +39,12 @@ div.social {
 
 .mission {
 	text-align: center;
-	padding-top: 50px;
+	padding-top: 20px;
+}
+
+.email_signup {
+	text-align: center;
+	padding-top: 20px;
 }
 
 

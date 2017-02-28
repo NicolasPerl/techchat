@@ -306,14 +306,29 @@
 			    			<img src="./TechChatLogo.png" alt="logo" class="tc_logo"/>
 			    		</div>
 			
-			    		<div class="col-md-9 mission">
+			    		<!-- <div class="col-md-6 mission">
 			    			<h2> Stay updated on modern tech! </h2>
+			    		</div> -->
+
+			    		<div class="col-md-9">
+			    			<h2 class="mission"> Learn about tech. Short & simple stories. Daily. </h2>
+
+			    			<form action="email.php" method="post" class="form-inline email_signup">
+							  <div class="form-group">
+							    <label for="exampleInputEmail2"></label>
+							    <input type="email" name="emails" class="form-control" id="exampleInputEmail2" placeholder="Input your email to...">
+							  </div>
+							  <button type="submit" class="btn btn-default">Start learning!</button>
+							</form>
 			    		</div>
 
 
 					</div>      
 				</div>
 			</div>
+
+
+
 
 				    
 			<!--	
@@ -352,13 +367,7 @@
 							//close the connection
 							$con->close();
 						?>
-							<form action="email.php" method="post" class="form-inline">
-							  <div class="form-group">
-							    <label for="exampleInputEmail2">Email</label>
-							    <input type="email" name="emails" class="form-control" id="exampleInputEmail2" placeholder="techchat@example.com">
-							  </div>
-							  <button type="submit" class="btn btn-default">I do want to get smarter</button>
-							</form>
+							
 
 							<iframe id="videoDay" width="100%" height="700" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
 			
