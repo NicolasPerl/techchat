@@ -306,19 +306,27 @@
 			    			<img src="./TechChatLogo.png" alt="logo" class="tc_logo"/>
 			    		</div>
 			
-			    		<!-- <div class="col-md-6 mission">
-			    			<h2> Stay updated on modern tech! </h2>
-			    		</div> -->
+			    		
 
 			    		<div class="col-md-9">
-			    			<h2 class="mission"> Learn about tech. Short & simple stories. Daily. </h2>
+			    			<!--typed.js-->
+			    			<div class="wrap">
+								<div class="type-wrap">
+							        <div id="typed-strings">
+							            <span>learn about tech</span>
+							            <p>short <em>and</em> simple stories</p>
+							            <p>daily.</p>
+							        </div>
+							        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; top: 40px; font-size: 200%; color: black; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 150px;"></span>
+							    </div>
+							</div>
 
 			    			<form action="email.php" method="post" class="form-inline email_signup">
 							  <div class="form-group">
 							    <label for="exampleInputEmail2"></label>
 							    <input type="email" name="emails" class="form-control" id="exampleInputEmail2" placeholder="Input your email to...">
 							  </div>
-							  <button type="submit" class="btn btn-default">Start learning!</button>
+							  <button type="submit" class="btn btn-default">be enlightned!</button>
 							</form>
 			    		</div>
 
@@ -327,24 +335,6 @@
 				</div>
 			</div>
 
-
-
-
-				    
-			<!--	
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="wrap">-->
-							<!--<div class="type-wrap">
-						        <div id="typed-strings">
-						            <span>Stay <strong>updated</strong> on modern tech</span>
-						            <p>30 second <em>short</em> stories for everyone</p>
-						            <p>Enjoy</p>
-						        </div>
-						        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; bottom: 430px; font-size: 300%; color: white; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 150px;"></span>
-						    </div>
-						</div>-->
-			
 						<?php 
 						ini_set('display_errors',1); ini_set('display_startup_errors',1); 
 						error_reporting(-1);
@@ -367,8 +357,7 @@
 							//close the connection
 							$con->close();
 						?>
-							
-
+							<!--Jumbotron-->
 							<iframe id="videoDay" width="100%" height="700" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
 			
 										      
