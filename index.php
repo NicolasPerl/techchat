@@ -204,9 +204,7 @@
 	<!--[if lt IE 9]>
 	        
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	        
-	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	    
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>	    
 	<![endif]-->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
@@ -279,8 +277,6 @@
 	  ga('send', 'pageview');
 
 	</script>
-
-
 	<!--Connect to facebook -->
 	<div id="fb-root"></div>
 	<script>
@@ -293,21 +289,14 @@
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
     <!-- Navigation -->
-    
-	    
 	<!-- Page Content -->
-	
 	<!--<div class="jumbotron">-->
-		
 		    <div class="container">
 			    <div class="nav-container2">
 			    	<div class="row">
 			    		<div class="col-md-3">
 			    			<img src="./TechChatLogo.png" alt="logo" class="tc_logo"/>
 			    		</div>
-			
-			    		
-
 			    		<div class="col-md-9">
 			    			<!--typed.js-->
 			    			<div class="wrap">
@@ -329,41 +318,29 @@
 							  <button type="submit" class="btn btn-default">be enlightned!</button>
 							</form>
 			    		</div>
-
-
 					</div>      
 				</div>
 			</div>
-
 						<?php 
 						ini_set('display_errors',1); ini_set('display_startup_errors',1); 
 						error_reporting(-1);
-						
 						include "mysqli_connection.php";
-
-						$query = "SELECT vidID FROM videoDay ORDER BY id DESC";
-							//query the result and assign in to $result
-							$result = $con->query($query);
-							//if the row is not empty
-
-							if ($result->num_rows > 0) {
-								while ($fetch=$result->fetch_assoc()) {
-									//convert array to string
-									$string_version = implode(',', $fetch);
-
-								}
+						$query = "SELECT vidID FROM videos ORDER BY max(id)";
+						//query the result and assign in to $result
+						$result = $con->query($query);
+						//if the row is not empty
+						if ($result->num_rows > 0) {
+							while ($fetch=$result->fetch_assoc()) {
+								//convert array to string
+								$string_version = implode(',', $fetch);
 							}
-
-							//close the connection
-							$con->close();
-						?>
-							<!--Jumbotron-->
-							<iframe id="videoDay" width="100%" height="700" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>
-			
-										      
-	    				<!--</div>-->      
-					
-
+						}
+						//close the connection
+						$con->close();
+					?>
+						<!--Jumbotron-->
+						<iframe id="videoDay" width="100%" height="700" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>		
+    				<!--</div>-->      
 	<!--</div>-->
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<div class="post">
@@ -372,15 +349,10 @@
 					<div class="col-md-8">
 						<h1 id="stories"> Short Stories </h1>
 						<?php
-
 						include "mysqli_connection.php";
-
-
 						$query = "SELECT id, headline, media, article_date, time_to_read, tag FROM articles ORDER BY id DESC $limit";
-
 						//query the result and assign in to $result
 						$result = $con->query($query);
-						
 						//if the row is not empty
 						if ($result->num_rows > 0) {
 							while ($fetch=$result->fetch_assoc()) {
@@ -397,17 +369,11 @@
 									
 								echo '</div>';
 							}
-						}
-						
-						
+						}						
 						//close the connection
 						$con->close();
 						?>	
 					</div>
-				
-				
-
-				
 					<div class="col-md-4">
 						<h1 id="videos"> Videos </h1>
 						<?php
@@ -416,28 +382,30 @@
 
 
 						
-						
-						$query = "SELECT id, headline, vidID, video_date, time_to_watch FROM videos ORDER BY id DESC $limitvidID";
+						//vidID queries must be alone
+						$query = "SELECT vidID FROM videos ORDER BY id DESC $limitvidID";
 						$secondQuery = "SELECT headline FROM videos ORDER BY id DESC $limitvidID";
+						$videoDeets = "SELECT video_date, time_to_watch FROM videos ORDER BY id DESC $limitvidID";
 
 
 						//query the result and assign in to $result
 						$result = $con->query($query);
 						$result2 = $con->query($secondQuery);
+						$resultDeets = $con->query($videoDeets);
 
 						//if the row is not empty
-
 						if ($result->num_rows > 0) {
 							while ($fetch=$result->fetch_assoc()) {
+								// fetch video details
+								$fetchDeets=$resultDeets->fetch_assoc();
 								echo '<div class="col-md-12">';
-
 									//convert array to string
 									$string_version = implode(',', $fetch);
-
-									echo '<h5 class="pull-left time_to_watch">'. $fetch["time_to_watch"]. '</h5>'.'<h5 class="pull-right video_date">'. $fetch["video_date"]. '</h5>'; 
+									echo '<h5 class="pull-left time_to_watch">'. $fetchDeets["time_to_watch"]. '</h5>'.'<h5 class="pull-right video_date">'. $fetchDeets["video_date"]. '</h5>';
+									//youtube link  
 									echo '<iframe id="videoList" width="300" height="300" src="https://www.youtube.com/embed/'. $fetch["vidID"].'?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
-
 									echo nl2br("\n");
+									// fetch headline
 									$fetchH = $result2->fetch_assoc();
 									$string_versionH = implode(',', $fetchH);
 									echo '<div class = "headline">';
