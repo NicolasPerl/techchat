@@ -9,7 +9,7 @@
 	//Here we have the total row count
 	$rows = $row[0];
 	//this is the number of results we want displayed per page
-	$page_rows = 8;
+	$page_rows = 12;
 	// this is the number of videos displayed per page
 	$vid_per_page = $page_rows / 2;
 
@@ -309,7 +309,6 @@
 							        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; top: 40px; font-size: 200%; color: black; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 150px;"></span>
 							    </div>
 							</div>
-
 			    			<form action="email.php" method="post" class="form-inline email_signup">
 							  <div class="form-group">
 							    <label for="exampleInputEmail2"></label>
@@ -348,51 +347,80 @@
 				<div class="row">
 					<div class="col-md-8">
 						<h1 id="stories"> Short Stories </h1>
-						<?php
-						include "mysqli_connection.php";
-						$query = "SELECT id, headline, media, article_date, time_to_read, tag FROM articles ORDER BY id DESC $limit";
-						//query the result and assign in to $result
-						$result = $con->query($query);
-						//if the row is not empty
-						if ($result->num_rows > 0) {
-							while ($fetch=$result->fetch_assoc()) {
-								echo '<div class="col-md-6">';
-									//click on article and it takes you to id in database. Convert image to binary code you can use
-									echo '<h5 class="pull-left time_to_read">'. $fetch["time_to_read"]. '</h5>'.'<h5 class="pull-right article_date">'. $fetch["article_date"]. '</h5>'; 
-									echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'" class="article img-responsive center-block" /></a>';
-									//new line
-									echo nl2br("\n");
-									echo '<div class = "headline">';
-										echo $fetch['headline'];
-									echo '</div>';	
-									echo nl2br("\n");
+							<div class="row">
+								<div class="col-md-6">
+									<?php
+									include "mysqli_connection.php";
+									$query = "SELECT id, headline, media, article_date, time_to_read, tag FROM articles WHERE id % 2 = 0 ORDER BY id DESC $limit";
+									$query_odd = "SELECT id, headline, media, article_date, time_to_read, tag FROM articles WHERE id % 2 = 1 ORDER BY id DESC $limit";
+									//query the result and assign in to $result
+									$result = $con->query($query);
+									$result_odd = $con->query($query_odd);
+									//var_dump("Result Even :",$result);
+									//var_dump("Result ODD : ", $result_odd);
 									
-								echo '</div>';
-							}
-						}						
-						//close the connection
-						$con->close();
-						?>	
+									//if the row is not empty
+									if ($result->num_rows > 0) {
+										while ($fetch=$result->fetch_assoc()) {
+											echo '<div class="col-lg-12">';
+												//click on article and it takes you to id in database. Convert image to binary code you can use
+												echo '<h5 class="pull-left time_to_read">'. $fetch["time_to_read"]. '</h5>'.'<h5 class="pull-right article_date">'. $fetch["article_date"]. '</h5>'; 
+												echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'" class="article img-responsive center-block" /></a>';
+												//new line
+												echo nl2br("\n");
+												echo '<div class = "headline">';
+													echo $fetch['headline'];
+													echo nl2br("\n");
+												echo '</div>';	
+												echo nl2br("\n");
+											echo '</div>';
+										}	
+									}
+									?>
+								</div>
+								<div class="col-md-6">
+									<?php
+									if ($result_odd->num_rows > 0) {
+										while ($fetch_odd = $result_odd->fetch_assoc()) {
+											echo '<div class="col-lg-12">';
+												//click on article and it takes you to id in database. Convert image to binary code you can use
+												echo '<h5 class="pull-left time_to_read">'. $fetch_odd["time_to_read"]. '</h5>'.'<h5 class="pull-right article_date">'. $fetch_odd["article_date"]. '</h5>'; 
+												echo '<a href="articles.php?image=' . $fetch_odd['id'] .'"><img src="data:image/jpeg;base64,'.base64_encode( $fetch_odd['media'] ).'" class="article img-responsive center-block" /></a>';
+												//new line
+												echo nl2br("\n");
+												echo '<div class = "headline">';
+													echo $fetch_odd['headline'];
+													echo nl2br("\n");
+												echo '</div>';	
+												echo nl2br("\n");
+
+												
+											echo '</div>';
+											
+										}
+
+									}						
+									//close the connection
+									$con->close();
+									?>	
+								</div>
+							</div>
 					</div>
+
+
+					
 					<div class="col-md-4">
 						<h1 id="videos"> Videos </h1>
 						<?php
-
-						include "mysqli_connection.php";
-
-
-						
+						include "mysqli_connection.php";				
 						//vidID queries must be alone
 						$query = "SELECT vidID FROM videos ORDER BY id DESC $limitvidID";
 						$secondQuery = "SELECT headline FROM videos ORDER BY id DESC $limitvidID";
 						$videoDeets = "SELECT video_date, time_to_watch FROM videos ORDER BY id DESC $limitvidID";
-
-
 						//query the result and assign in to $result
 						$result = $con->query($query);
 						$result2 = $con->query($secondQuery);
 						$resultDeets = $con->query($videoDeets);
-
 						//if the row is not empty
 						if ($result->num_rows > 0) {
 							while ($fetch=$result->fetch_assoc()) {
@@ -415,17 +443,9 @@
 								echo '</div>';
 							}
 						}
-	
 						//close the connection
 						$con->close();
-						?>
-						
-
-						
-						
-
-						
-							
+						?>						
 					</div>
 				</div>
 			</div>
@@ -456,19 +476,13 @@
 									<li class="about"><a href="#">Tech Tips</a></li>
 									<li class="about"><a href="#">Advertise With Us</a></li>-->
 								</ul>
-					
-
-								<p>Copyright &#169 TechChat Network Inc. All rights reserved</p>
-
-								
+								<p>Copyright &#169 TechChat Network Inc. All rights reserved</p>						
 							</footer>
 						</div>
 					</div>
 				</div>
 		
 
-	    
-	
 	<!-- /.container -->
 
 	    
@@ -484,3 +498,4 @@
 </body>
 
 </html>
+
