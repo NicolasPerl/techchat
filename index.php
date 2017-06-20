@@ -11,8 +11,8 @@
 	//this is the number of results we want displayed per page
 	$page_rows = 12;
 	// this is the number of videos displayed per page
-	$vid_per_page = $page_rows / 2;
-
+	//$vid_per_page = $page_rows / 2;
+	$vid_per_page = 12;
 	//this tells us the page number of our last page
 	$last = ceil($rows/$page_rows);
 	//this makes sure $last can't be less than 1
