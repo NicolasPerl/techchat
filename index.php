@@ -324,7 +324,7 @@
 						ini_set('display_errors',1); ini_set('display_startup_errors',1); 
 						error_reporting(-1);
 						include "mysqli_connection.php";
-						$query = "SELECT vidID FROM videos ORDER BY max(id)";
+						$query = "SELECT vidID FROM videos ORDER BY id DESC limit 1";
 						//query the result and assign in to $result
 						$result = $con->query($query);
 						//if the row is not empty
@@ -414,9 +414,9 @@
 						<?php
 						include "mysqli_connection.php";				
 						//vidID queries must be alone
-						$query = "SELECT vidID FROM videos ORDER BY id DESC $limitvidID";
-						$secondQuery = "SELECT headline FROM videos ORDER BY id DESC $limitvidID";
-						$videoDeets = "SELECT video_date, time_to_watch FROM videos ORDER BY id DESC $limitvidID";
+						$query = "SELECT vidID FROM videos WHERE id != (SELECT MAX(id) FROM videos) ORDER BY id DESC $limitvidID";
+						$secondQuery = "SELECT headline FROM videos WHERE id != (SELECT MAX(id) FROM videos) ORDER BY id DESC $limitvidID";
+						$videoDeets = "SELECT video_date, time_to_watch FROM videos WHERE id != (SELECT MAX(id) FROM videos) ORDER BY id DESC $limitvidID";
 						//query the result and assign in to $result
 						$result = $con->query($query);
 						$result2 = $con->query($secondQuery);
