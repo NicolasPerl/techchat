@@ -200,6 +200,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" href= "style.php"/>
+
+	<!--Favicon Icon on for tabs -->
 	    
 	<!--[if lt IE 9]>
 	        
