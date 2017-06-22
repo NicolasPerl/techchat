@@ -316,7 +316,7 @@
 							    <label for="exampleInputEmail2"></label>
 							    <input type="email" name="emails" class="form-control" id="exampleInputEmail2" placeholder="Input your email to...">
 							  </div>
-							  <button type="submit" class="btn btn-default">be enlightned!</button>
+							  <button type="submit" class="btn btn-default">Be enlightend!</button>
 							</form>
 			    		</div>
 					</div>      
