@@ -120,8 +120,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" href= "style.php"/>
-	    
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
 	<!--[if lt IE 9]>
+
 	        
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	        
