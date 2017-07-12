@@ -58,7 +58,7 @@
 				echo "<br>";
 				echo '<img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'" class="article-pic img-rounded center-block img-responsive" />';
 				echo "<br>";
-				echo '<p>'.$fetch['story'].'</p>';
+				echo nl2br('<p>'.$fetch['story'].'</p>');
 				//echo '<div class="container">';
 				//echo '<div class="fb-like" data-href="https://www.facebook.com/techchatt/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="true"></div>';
 				//echo '<div class="fb-comments"  data-href="http://localhost:8000/articles.php?image=2" data-numposts="5"></div>';

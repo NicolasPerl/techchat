@@ -102,7 +102,7 @@
     
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
 	    
@@ -296,10 +296,10 @@
 		    <div class="container">
 			    <div class="nav-container2">
 			    	<div class="row">
-			    		<div class="col-md-3">
+			    		<div class="col-xs-4 col-md-3">
 			    			<img src="./TechChatLogo.png" alt="logo" class="tc_logo"/>
 			    		</div>
-			    		<div class="col-md-9">
+			    		<div class="col-xs-8 col-md-5 test">
 			    			<!--typed.js-->
 			    			<div class="wrap">
 								<div class="type-wrap">
@@ -308,9 +308,11 @@
 							            <p>short <em>and</em> simple stories</p>
 							            <p>daily.</p>
 							        </div>
-							        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; top: 40px; font-size: 200%; color: black; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 150px;"></span>
+							        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; top: 40px; font-size: 200%; color: black; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 0px;"></span>
 							    </div>
 							</div>
+						</div>
+						<div class="col-xs-12 col-md-4 test2">
 			    			<form action="email.php" method="post" class="form-inline email_signup">
 							  <div class="form-group">
 							    <label for="exampleInputEmail2"></label>
@@ -322,6 +324,9 @@
 					</div>      
 				</div>
 			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-12">
 						<?php 
 						ini_set('display_errors',1); ini_set('display_startup_errors',1); 
 						error_reporting(-1);
@@ -338,11 +343,14 @@
 						}
 						//close the connection
 						$con->close();
-					?>
+						?>
 						<!--Jumbotron-->
-						<iframe id="videoDay" width="100%" height="700" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>		
-    				<!--</div>-->      
-	<!--</div>-->
+						<div class="video-container">
+							<iframe id="videoDay" width="100" height="500" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>		
+						</div>
+					</div>
+				</div>
+			</div>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<div class="post">
 			<div class="container">
