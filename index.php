@@ -349,7 +349,7 @@
 						?>
 						<!--Jumbotron-->
 						<div class="video-container">
-							<iframe id="videoDay" width="100" height="500" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>		
+							<iframe id="videoDay" width="100%" height="500" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>		
 						</div>
 					</div>
 				</div>
