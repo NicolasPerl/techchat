@@ -120,7 +120,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" href= "style.php"/>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+	<link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon"> 
 	<!--[if lt IE 9]>
 
 	        
@@ -152,6 +152,8 @@
         });
 
     });
+
+    window.onload = function();
 
     function newTyped(){ /* A new typed object */ }
 
