@@ -98,8 +98,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -173,130 +171,22 @@
 
 </head>
 
-<body>
+<body onload="myFunction()" style="margin:0;">
 
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	    
-	<title>TechChat News</title>
-	    
-	<!-- Custom CSS -->
-	<!--<link href="style.php" rel="stylesheet" title="index style" type="text/css" media="all" />-->
-	<link href="logo-nav.css" rel="stylesheet" title="basic style" type="text/css" media="all" />
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-
-	<!-- Bootstrap Core CSS -->
-	<link href="bootstrap.min.css" rel="stylesheet" title="basic style" type="text/css" media="all"/>
-
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
-	<link rel="stylesheet" type="text/css" href= "style.php"/>
-
-	<!--Favicon Icon on for tabs -->
-	    
-	<!--[if lt IE 9]>
-	        
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>	    
-	<![endif]-->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script>
-    
-    $(function(){
-
-        $("#typed").typed({
-            // strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
-            stringsElement: $('#typed-strings'),
-            typeSpeed: 30,
-            backDelay: 500,
-            loop: false,
-            contentType: 'html', // or text
-            // defaults to false for infinite loop
-            loopCount: false,
-            callback: function(){ foo(); },
-            resetCallback: function() { newTyped(); }
-        });
-
-        $(".reset").click(function(){
-            $("#typed").typed('reset');
-        });
-
-    });
-	
-    function newTyped(){ /* A new typed object */ }
-
-    function foo(){ console.log("Callback"); }
-
-
-	function SetCookie(c_name,value,expiredays)
-	{
-	    var exdate=new Date()
-	    exdate.setDate(exdate.getDate()+expiredays)
-	    document.cookie=c_name+ "=" +escape(value)+
-	    ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
-	}
-
-
-	</script>
-
-</head>
-
-<body>
-<!--Facebook API integration-->
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '224533154659650',
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
 	  ga('create', 'UA-90907253-1', 'auto');
 	  ga('send', 'pageview');
-
-	</script>
-	<!--Connect to facebook -->
-	<div id="fb-root"></div>
-	<script>
-		(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
 	</script>
     <!-- Navigation -->
 	<!-- Page Content -->
 	<!--<div class="jumbotron">-->
+		<div class="wrapper">
+  			<div id="loader" class="rubik-loader"></div>
+		</div>
 		    <div class="container">
 			    <div class="nav-container2">
 			    	<div class="row">
@@ -359,7 +249,6 @@
 		<div class="post">
 			<div class="container">
 				<div class="row">
-
 					<div class="col-md-4">
 						<h1 id="videos"> Videos </h1>
 						<?php
@@ -504,7 +393,16 @@
 	    
 	<script src="js/jquery.js"></script>
 
-	    
+    <script>
+	var myVar;
+	function myFunction() {
+	    myVar = setTimeout(showPage, 3000);
+	}
+	function showPage() {
+	  document.getElementById("loader").style.display = "none";
+	  /*document.getElementById("myDiv").style.display = "block";*/
+	}
+	</script>
 	<!-- Bootstrap Core JavaScript -->
 	    
 	<script src="js/bootstrap.min.js"></script>
