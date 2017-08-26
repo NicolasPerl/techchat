@@ -171,7 +171,7 @@
 	      <div class="heart-piece-7"></div>
 	      <div class="heart-piece-8"></div>
 	    </div>
-	    <p>made with love</p>
+	    <p>~loading~</p>
 	  </div>
 	</div>
 </div>
