@@ -1,5 +1,4 @@
 <?php
-
 	include "mysqli_connection.php";
 	
 	$query = "SELECT COUNT(id) FROM articles";
@@ -9,10 +8,10 @@
 	//Here we have the total row count
 	$rows = $row[0];
 	//this is the number of results we want displayed per page
-	$page_rows = 12;
+	$page_rows = 10;
 	// this is the number of videos displayed per page
 	//$vid_per_page = $page_rows / 2;
-	$vid_per_page = 13;
+	$vid_per_page = 11;
 	//this tells us the page number of our last page
 	$last = ceil($rows/$page_rows);
 	//this makes sure $last can't be less than 1
@@ -22,8 +21,6 @@
 	// establish the $pagenum variable
 	$pagenum = 1;
 	$dummy = $_GET['pn'];
-
-
 	//get pagenum from URL vars if it is present, else it is = 1
 	if (isset($_GET['pn'])) {
 		$pagenum = preg_replace('#[^0-9]#', '', $_GET['pn']);
@@ -44,7 +41,6 @@
 	//$query = "SELECT id, headline, media, time_stamp, tag FROM articles ORDER BY id DESC $limit";
 	//$result = $con->query($query);
 	
-
 	//shows the user what page they are on and the total number of pages
 	$textline1 = "Dummy (<b>$rows</b>)";
 	$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
@@ -65,16 +61,13 @@
 				}
 				
 			}
-
 		}
-
 		// render the target page number without it being a link. Dead link.
 		$paginationCtrls .= ''.$pagenum;
 		//render clickable number links that would appear on the right
 		for ($i = $pagenum+1; $i <=$last; $i++) {
 			//$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a>';
 			$paginationCtrls .= '<a href="index.php?pn='.$i.'">'.$i.'</a>';
-
 			if ($i >= $pagenum+4) {
 				break;
 			}
@@ -86,7 +79,6 @@
 			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$next.'">Next</a> ';
 			*/
 			$paginationCtrls .= '<a href="index.php?pn='.$next.'">Next</a> ';
-
 			
 		}
 	}
@@ -98,6 +90,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -120,7 +114,6 @@
 	<link rel="stylesheet" type="text/css" href= "style.php"/>
 	<link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon"> 
 	<!--[if lt IE 9]>
-
 	        
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	        
@@ -131,7 +124,6 @@
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script>
     $(function(){
-
         $("#typed").typed({
             // strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
             stringsElement: $('#typed-strings'),
@@ -144,20 +136,13 @@
             callback: function(){ foo(); },
             resetCallback: function() { newTyped(); }
         });
-
         $(".reset").click(function(){
             $("#typed").typed('reset');
         });
-
     });
-
     window.onload = function();
-
     function newTyped(){ /* A new typed object */ }
-
     function foo(){ console.log("Callback"); }
-
-
 	function SetCookie(c_name,value,expiredays)
 	{
 	    var exdate=new Date()
@@ -165,14 +150,101 @@
 	    document.cookie=c_name+ "=" +escape(value)+
 	    ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
 	}
-
-
 	</script>
 
 </head>
 
-<body onload="myFunction()" style="margin:0;">
+<body>
 
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	    
+	<title>TechChat News</title>
+	    
+	<!-- Custom CSS -->
+	<!--<link href="style.php" rel="stylesheet" title="index style" type="text/css" media="all" />-->
+	<link href="logo-nav.css" rel="stylesheet" title="basic style" type="text/css" media="all" />
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+	<!-- Bootstrap Core CSS -->
+	<link href="bootstrap.min.css" rel="stylesheet" title="basic style" type="text/css" media="all"/>
+
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href= "style.php"/>
+
+	<!--Favicon Icon on for tabs -->
+	    
+	<!--[if lt IE 9]>
+	        
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>	    
+	<![endif]-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script>
+    
+    $(function(){
+        $("#typed").typed({
+            // strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
+            stringsElement: $('#typed-strings'),
+            typeSpeed: 30,
+            backDelay: 500,
+            loop: false,
+            contentType: 'html', // or text
+            // defaults to false for infinite loop
+            loopCount: false,
+            callback: function(){ foo(); },
+            resetCallback: function() { newTyped(); }
+        });
+        $(".reset").click(function(){
+            $("#typed").typed('reset');
+        });
+    });
+	
+    function newTyped(){ /* A new typed object */ }
+    function foo(){ console.log("Callback"); }
+	function SetCookie(c_name,value,expiredays)
+	{
+	    var exdate=new Date()
+	    exdate.setDate(exdate.getDate()+expiredays)
+	    document.cookie=c_name+ "=" +escape(value)+
+	    ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+	}
+	</script>
+
+</head>
+
+<body>
+<!--Facebook API integration-->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '224533154659650',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+  };
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -181,12 +253,20 @@
 	  ga('create', 'UA-90907253-1', 'auto');
 	  ga('send', 'pageview');
 	</script>
+	<!--Connect to facebook -->
+	<div id="fb-root"></div>
+	<script>
+		(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
     <!-- Navigation -->
 	<!-- Page Content -->
 	<!--<div class="jumbotron">-->
-		<div class="wrapper">
-  			<div id="loader" class="rubik-loader"></div>
-		</div>
 		    <div class="container">
 			    <div class="nav-container2">
 			    	<div class="row">
@@ -194,7 +274,7 @@
 			    			<img src="./TechChatLogo.png" alt="logo" class="tc_logo"/>
 			    		</div>
 			    		<div class="col-xs-8 col-md-5 test">
-			    			<!--typed.js-->
+			    			<!--typed.js
 			    			<div class="wrap">
 								<div class="type-wrap">
 							        <div id="typed-strings">
@@ -204,7 +284,7 @@
 							        </div>
 							        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; top: 40px; font-size: 200%; color: black; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 0px;"></span>
 							    </div>
-							</div>
+							</div>-->
 						</div>
 						<div class="col-xs-12 col-md-4 test2">
 			    			<form action="email.php" method="post" class="form-inline email_signup">
@@ -249,6 +329,7 @@
 		<div class="post">
 			<div class="container">
 				<div class="row">
+
 					<div class="col-md-4">
 						<h1 id="videos"> Videos </h1>
 						<?php
@@ -336,12 +417,10 @@
 													echo nl2br("\n");
 												echo '</div>';	
 												echo nl2br("\n");
-
 												
 											echo '</div>';
 											
 										}
-
 									}						
 									//close the connection
 									$con->close();
@@ -393,16 +472,7 @@
 	    
 	<script src="js/jquery.js"></script>
 
-    <script>
-	var myVar;
-	function myFunction() {
-	    myVar = setTimeout(showPage, 3000);
-	}
-	function showPage() {
-	  document.getElementById("loader").style.display = "none";
-	  /*document.getElementById("myDiv").style.display = "block";*/
-	}
-	</script>
+	    
 	<!-- Bootstrap Core JavaScript -->
 	    
 	<script src="js/bootstrap.min.js"></script>
@@ -410,4 +480,3 @@
 </body>
 
 </html>
-
