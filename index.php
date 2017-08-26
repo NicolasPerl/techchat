@@ -94,78 +94,6 @@
     
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	    
-	<title>TechChat News</title>
-	    
-	<!-- Custom CSS -->
-	<!--<link href="style.php" rel="stylesheet" title="index style" type="text/css" media="all" />-->
-	<link href="logo-nav.css" rel="stylesheet" title="basic style" type="text/css" media="all" />
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-
-	<!-- Bootstrap Core CSS -->
-	<link href="bootstrap.min.css" rel="stylesheet" title="basic style" type="text/css" media="all"/>
-
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
-	<link rel="stylesheet" type="text/css" href= "style.php"/>
-	<link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon"> 
-	<!--[if lt IE 9]>
-	        
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	        
-	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	    
-	<![endif]-->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script>
-    $(function(){
-        $("#typed").typed({
-            // strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
-            stringsElement: $('#typed-strings'),
-            typeSpeed: 30,
-            backDelay: 500,
-            loop: false,
-            contentType: 'html', // or text
-            // defaults to false for infinite loop
-            loopCount: false,
-            callback: function(){ foo(); },
-            resetCallback: function() { newTyped(); }
-        });
-        $(".reset").click(function(){
-            $("#typed").typed('reset');
-        });
-    });
-    window.onload = function();
-    function newTyped(){ /* A new typed object */ }
-    function foo(){ console.log("Callback"); }
-	function SetCookie(c_name,value,expiredays)
-	{
-	    var exdate=new Date()
-	    exdate.setDate(exdate.getDate()+expiredays)
-	    document.cookie=c_name+ "=" +escape(value)+
-	    ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
-	}
-	</script>
-
-</head>
-
-<body>
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -228,6 +156,25 @@
 </head>
 
 <body>
+<!-- Loader -->
+<div id="overlay">
+	<div class="flex-container">
+	  <div class="unit">
+	    <div class="heart">
+	      <div class="heart-piece-0"></div>
+	      <div class="heart-piece-1"></div>
+	      <div class="heart-piece-2"></div>
+	      <div class="heart-piece-3"></div>
+	      <div class="heart-piece-4"></div>
+	      <div class="heart-piece-5"></div>
+	      <div class="heart-piece-6"></div>
+	      <div class="heart-piece-7"></div>
+	      <div class="heart-piece-8"></div>
+	    </div>
+	    <p>made with love</p>
+	  </div>
+	</div>
+</div>
 <!--Facebook API integration-->
 <script>
   window.fbAsyncInit = function() {
@@ -274,7 +221,7 @@
 			    			<img src="./TechChatLogo.png" alt="logo" class="tc_logo"/>
 			    		</div>
 			    		<div class="col-xs-8 col-md-5 test">
-			    			<!--typed.js
+			    			<!--typed.js-->
 			    			<div class="wrap">
 								<div class="type-wrap">
 							        <div id="typed-strings">
@@ -284,7 +231,7 @@
 							        </div>
 							        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; top: 40px; font-size: 200%; color: black; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 0px;"></span>
 							    </div>
-							</div>-->
+							</div>
 						</div>
 						<div class="col-xs-12 col-md-4 test2">
 			    			<form action="email.php" method="post" class="form-inline email_signup">
