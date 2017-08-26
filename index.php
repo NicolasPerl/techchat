@@ -107,7 +107,7 @@
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
 	<!-- Bootstrap Core CSS -->
-	<link href="bootstrap.min.css" rel="stylesheet" title="basic style" type="text/css" media="all"/>
+	<link href="/styles/bootstrap.min.css" rel="stylesheet" title="basic style" type="text/css" media="all"/>
 
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
@@ -218,10 +218,10 @@
 			    <div class="nav-container2">
 			    	<div class="row">
 			    		<div class="col-xs-4 col-md-3">
-			    			<img src="./TechChatLogo.png" alt="logo" class="tc_logo"/>
+			    			<img src="/Images/TechChatLogo.png" alt="logo" class="tc_logo"/>
 			    		</div>
 			    		<div class="col-xs-8 col-md-5 test">
-			    			<!--typed.js
+			    			<!--typed.js-->
 			    			<div class="wrap">
 								<div class="type-wrap">
 							        <div id="typed-strings">
@@ -231,7 +231,7 @@
 							        </div>
 							        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; top: 40px; font-size: 200%; color: black; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 0px;"></span>
 							    </div>
-							</div>-->
+							</div>
 						</div>
 						<div class="col-xs-12 col-md-4 test2">
 			    			<form action="email.php" method="post" class="form-inline email_signup">
@@ -389,13 +389,13 @@
 							<div class="nav-container2">
 						    <ul class="social-media-list">
 						        <li>
-						            <a class="socialEffect" href="https://www.instagram.com/techchat/?hl=en" target="_blank"><img src="./instagram.png" alt="instagram" /></a>
+						            <a class="socialEffect" href="https://www.instagram.com/techchat/?hl=en" target="_blank"><img src="/Images/instagram.png" alt="instagram" /></a>
 						        </li>
 						        <li>
-						            <a class="socialEffect" href="https://www.facebook.com/techchatt/?ref=aymt_homepage_panel" target="_blank"><img src="./facebook.png" alt="facebook" /></a>
+						            <a class="socialEffect" href="https://www.facebook.com/techchatt/?ref=aymt_homepage_panel" target="_blank"><img src="/Images/facebook.png" alt="facebook" /></a>
 						        </li>
 						        <li> 
-						            <a href="https://twitter.com/TechChatTX" target="_blank"><img src="./twitter.png" alt="twitter" /></a>
+						            <a href="https://twitter.com/TechChatTX" target="_blank"><img src="/Images/twitter.png" alt="twitter" /></a>
 						        </li>
 						    </ul>
 						</div>
