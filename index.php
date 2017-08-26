@@ -221,7 +221,7 @@
 			    			<img src="./TechChatLogo.png" alt="logo" class="tc_logo"/>
 			    		</div>
 			    		<div class="col-xs-8 col-md-5 test">
-			    			<!--typed.js-->
+			    			<!--typed.js
 			    			<div class="wrap">
 								<div class="type-wrap">
 							        <div id="typed-strings">
@@ -231,7 +231,7 @@
 							        </div>
 							        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; top: 40px; font-size: 200%; color: black; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 0px;"></span>
 							    </div>
-							</div>
+							</div>-->
 						</div>
 						<div class="col-xs-12 col-md-4 test2">
 			    			<form action="email.php" method="post" class="form-inline email_signup">
