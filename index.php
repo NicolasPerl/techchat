@@ -109,6 +109,8 @@
 	<!-- Bootstrap Core CSS -->
 	<link href="/styles/bootstrap.min.css" rel="stylesheet" title="basic style" type="text/css" media="all"/>
 
+	<script src="lib/typed.min.js" type="text/javascript"></script>
+
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
 	<!--<link rel="stylesheet" type="text/css" href= "style.php"/>-->
@@ -122,27 +124,8 @@
 	<![endif]-->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script>
     
-    $(function(){
-        $("#typed").typed({
-            // strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
-            stringsElement: $('#typed-strings'),
-            typeSpeed: 30,
-            backDelay: 500,
-            loop: false,
-            contentType: 'html', // or text
-            // defaults to false for infinite loop
-            loopCount: false,
-            callback: function(){ foo(); },
-            resetCallback: function() { newTyped(); }
-        });
-        $(".reset").click(function(){
-            $("#typed").typed('reset');
-        });
-    });
-	
-    function newTyped(){ /* A new typed object */ }
+    <script>
     function foo(){ console.log("Callback"); }
 	function SetCookie(c_name,value,expiredays)
 	{
@@ -221,17 +204,29 @@
 			    			<img src="/Images/TechChatLogo.png" alt="logo" class="tc_logo"/>
 			    		</div>
 			    		<div class="col-xs-8 col-md-5 test">
-			    			<!--typed.js-->
-			    			<div class="wrap">
-								<div class="type-wrap">
-							        <div id="typed-strings">
-							            <span>learn about tech</span>
-							            <p>short <em>and</em> simple stories</p>
-							            <p>daily.</p>
-							        </div>
-							        <span id="typed" style="white-space:pre; font-family: 'Lato',sans-serif; position: absolute; top: 40px; font-size: 200%; color: black; font-weight: bold; padding: 0 20px; width: 40%; line-height: 150%; left: 0px;"></span>
-							    </div>
-							</div>
+							<!-- typed.js injection -->
+			                <div class="type-wrap">
+			                    <div id="typed-strings">
+			                        <h1>learn about <strong>tech</strong></h1>
+			                        <h1><em>short</em> and <em>simple</em> articles.</h1>
+			                    </div>
+			                    <span id="typed"></span>
+			                </div>
+			                <!-- typed.js ends here -->
+			                <!-- typed.js script -->
+			                <script>
+			                    var typed = new Typed('#typed', {
+			                    stringsElement: '#typed-strings',
+			                    typeSpeed: 40,
+			                    loop: false,
+			                    backDelay: 800,
+			                    startDelay: 4000,
+			                    showCursor: true,
+			                    backSpeed: 20,
+			                    });
+			                </script>
+			                <!--typed.js ends here -->
+			                
 						</div>
 						<div class="col-xs-12 col-md-4 test2">
 			    			<form action="email.php" method="post" class="form-inline email_signup">
