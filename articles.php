@@ -56,7 +56,7 @@
 				//var_dump($fetch);
 				echo '<h1>'.$fetch['headline'].'</h1>';
 				echo "<br>";
-				echo '<img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'" class="article-pic img-rounded center-block img-responsive" />';
+				echo '<img src="/media/'.$fetch['media'].'" class="article-pic img-rounded center-block img-responsive" />';
 				echo "<br>";
 				echo nl2br('<p>'.$fetch['story'].'</p>');
 				//echo '<div class="container">';

@@ -111,7 +111,7 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" href= "style.php"/>
+	<!--<link rel="stylesheet" type="text/css" href= "style.php"/>-->
 
 	<!--Favicon Icon on for tabs -->
 	    
@@ -315,6 +315,8 @@
 						$con->close();
 						?>						
 					</div>
+<!--below has been copied-->
+
 
 					<div class="col-md-8">
 						<h1 id="stories"> Short Stories </h1>
@@ -336,7 +338,7 @@
 											echo '<div class="col-lg-12">';
 												//click on article and it takes you to id in database. Convert image to binary code you can use
 												echo '<h5 class="pull-left time_to_read">'. $fetch["time_to_read"]. '</h5>'.'<h5 class="pull-right article_date">'. $fetch["article_date"]. '</h5>'; 
-												echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="data:image/jpeg;base64,'.base64_encode( $fetch['media'] ).'" class="article img-responsive center-block" /></a>';
+												echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="/media/'.$fetch['media'].'" class="article img-responsive center-block" /></a>';
 												//new line
 												echo nl2br("\n");
 												echo '<div class = "headline">';
@@ -356,7 +358,7 @@
 											echo '<div class="col-lg-12">';
 												//click on article and it takes you to id in database. Convert image to binary code you can use
 												echo '<h5 class="pull-left time_to_read">'. $fetch_odd["time_to_read"]. '</h5>'.'<h5 class="pull-right article_date">'. $fetch_odd["article_date"]. '</h5>'; 
-												echo '<a href="articles.php?image=' . $fetch_odd['id'] .'"><img src="data:image/jpeg;base64,'.base64_encode( $fetch_odd['media'] ).'" class="article img-responsive center-block" /></a>';
+												echo '<a href="articles.php?image=' . $fetch_odd['id'] .'"><img src="/media/'.$fetch_odd['media'].'" class="article img-responsive center-block" /></a>';
 												//new line
 												echo nl2br("\n");
 												echo '<div class = "headline">';
@@ -376,12 +378,45 @@
 							</div>
 					</div>
 
+
+<!-- above has been copied-->
+
 				</div>
 			</div>
 			<div>
 		</div>
 			    <div id = "pagination_controls"><?php echo $paginationCtrls; ?></div>
 			</div>
+
+			<!--
+			<footer>
+		        <div class="row">
+		            <div class="col-md-4">
+		                <center><p id="usingCoilFooter"> using coil</p>
+		                <div class="footerLinks">
+		                    <a href="/product.php"> product </a><br>
+		                    <a href="/proof.php"> inspiration </a>
+		                </div></center>
+		            </div>
+		            <div class="col-md-4">
+		                <center><span id="coilFooter" aria-hidden="true">techchat</span> 
+		                <div class="footerLinks">
+		                   
+		                    <a href="mailto:support@coilapp.com?Subject=Hi%20again!" target="_top">contact us</a>
+		                </div></center>
+		            </div>
+		            <div class="col-md-4">
+		                <center><p id="handyLinksFooter">handy links</p>
+		                <div class="footerLinks">
+		                    <a id="facebook" href="https://www.facebook.com/techchatt/?ref=aymt_homepage_panel"> facebook</a><br>
+		                    <a id="instagram" href="https://www.instagram.com/techchat/?hl=en">instagram</a><br>
+		                    <a id="twitter" href="https://twitter.com/TechChatTX">twitter</a><br>
+		                    <a id="youtube" href="https://www.youtube.com/channel/UCYgRAEfnB-OlpiBJBTduziQ">youtube</a><br>
+		                </div></center>
+		            </div>
+		        </div>
+		    </footer>-->
+			
 				<div class="footer">
 					<div class="row">
 						<div class="col-lg-12">
@@ -401,15 +436,13 @@
 						</div>
 								<ul style="list-style-type: none">
 									<li class="about"><a href="./contacts.html">Contact Us</a></li>
-									<!--<li class="about"><a href="#">Work With Us</a></li>
-									<li class="about"><a href="#">Tech Tips</a></li>
-									<li class="about"><a href="#">Advertise With Us</a></li>-->
 								</ul>
 								<p>Copyright &#169 TechChat Network Inc. All rights reserved</p>						
 							</footer>
 						</div>
 					</div>
 				</div>
+				
 		
 
 	<!-- /.container -->
