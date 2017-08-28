@@ -154,8 +154,9 @@
 	      <div class="heart-piece-7"></div>
 	      <div class="heart-piece-8"></div>
 	    </div>
-	    <p>~loading~</p>
+	    <p>~loading photos from<br> around the world~</p>
 	  </div>
+
 	</div>
 </div>
 <!--Facebook API integration-->
@@ -226,10 +227,10 @@
 			                    });
 			                </script>
 			                <!--typed.js ends here -->
-			                
+
 						</div>
 						<div class="col-xs-12 col-md-4 test2">
-			    			<form action="email.php" method="post" class="form-inline email_signup">
+			    			<form action="./Utilities/email.php" method="post" class="form-inline email_signup">
 							  <div class="form-group">
 							    <label for="exampleInputEmail2"></label>
 							    <input type="email" name="emails" class="form-control" id="exampleInputEmail2" placeholder="Input your email to...">
