@@ -139,6 +139,7 @@
 </head>
 
 <body>
+
 <!-- Loader -->
 <div id="overlay">
 	<div class="flex-container">
@@ -154,11 +155,13 @@
 	      <div class="heart-piece-7"></div>
 	      <div class="heart-piece-8"></div>
 	    </div>
-	    <p>~loading photos from<br> around the world~</p>
+	    <p>~loading media from<br> around the world~</p>
 	  </div>
 
 	</div>
 </div>
+
+
 <!--Facebook API integration-->
 <script>
   window.fbAsyncInit = function() {
@@ -198,6 +201,7 @@
     <!-- Navigation -->
 	<!-- Page Content -->
 	<!--<div class="jumbotron">-->
+		
 		    <div class="container">
 			    <div class="nav-container2">
 			    	<div class="row">
@@ -219,7 +223,7 @@
 			                    var typed = new Typed('#typed', {
 			                    stringsElement: '#typed-strings',
 			                    typeSpeed: 40,
-			                    loop: false,
+			                    loop: true,
 			                    backDelay: 800,
 			                    startDelay: 4000,
 			                    showCursor: true,
@@ -272,7 +276,6 @@
 		<div class="post">
 			<div class="container">
 				<div class="row">
-
 					<div class="col-md-4">
 						<h1 id="videos"> Videos </h1>
 						<?php
@@ -311,76 +314,72 @@
 						$con->close();
 						?>						
 					</div>
+			
 <!--below has been copied-->
 
 
-					<div class="col-md-8">
-						<h1 id="stories"> Short Stories </h1>
-							<div class="row">
-								<div class="col-md-6">
-									<?php
-									include "mysqli_connection.php";
-									$query = "SELECT id, headline, media, article_date, time_to_read, tag FROM articles WHERE id % 2 = 0 ORDER BY id DESC $limit";
-									$query_odd = "SELECT id, headline, media, article_date, time_to_read, tag FROM articles WHERE id % 2 = 1 ORDER BY id DESC $limit";
-									//query the result and assign in to $result
-									$result = $con->query($query);
-									$result_odd = $con->query($query_odd);
-									//var_dump("Result Even :",$result);
-									//var_dump("Result ODD : ", $result_odd);
-									
-									//if the row is not empty
-									if ($result->num_rows > 0) {
-										while ($fetch=$result->fetch_assoc()) {
-											echo '<div class="col-lg-12">';
-												//click on article and it takes you to id in database. Convert image to binary code you can use
-												echo '<h5 class="pull-left time_to_read">'. $fetch["time_to_read"]. '</h5>'.'<h5 class="pull-right article_date">'. $fetch["article_date"]. '</h5>'; 
-												echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="/media/'.$fetch['media'].'" class="article img-responsive center-block" /></a>';
-												//new line
-												echo nl2br("\n");
-												echo '<div class = "headline">';
-													echo $fetch['headline'];
-													echo nl2br("\n");
-												echo '</div>';	
-												echo nl2br("\n");
-											echo '</div>';
-										}	
-									}
-									?>
-								</div>
-								<div class="col-md-6">
-									<?php
-									if ($result_odd->num_rows > 0) {
-										while ($fetch_odd = $result_odd->fetch_assoc()) {
-											echo '<div class="col-lg-12">';
-												//click on article and it takes you to id in database. Convert image to binary code you can use
-												echo '<h5 class="pull-left time_to_read">'. $fetch_odd["time_to_read"]. '</h5>'.'<h5 class="pull-right article_date">'. $fetch_odd["article_date"]. '</h5>'; 
-												echo '<a href="articles.php?image=' . $fetch_odd['id'] .'"><img src="/media/'.$fetch_odd['media'].'" class="article img-responsive center-block" /></a>';
-												//new line
-												echo nl2br("\n");
-												echo '<div class = "headline">';
-													echo $fetch_odd['headline'];
-													echo nl2br("\n");
-												echo '</div>';	
-												echo nl2br("\n");
-												
-											echo '</div>';
-											
-										}
-									}						
-									//close the connection
-									$con->close();
-									?>	
-								</div>
-							</div>
+				<div class="col-md-8">
+					<h1 id="stories"> Short Stories </h1>
+					<div class="row">
+						<div class="col-md-6">
+							<?php
+							include "mysqli_connection.php";
+							$query = "SELECT id, headline, media, article_date, time_to_read, tag FROM articles WHERE id % 2 = 0 ORDER BY id DESC $limit";
+							$query_odd = "SELECT id, headline, media, article_date, time_to_read, tag FROM articles WHERE id % 2 = 1 ORDER BY id DESC $limit";
+							//query the result and assign in to $result
+							$result = $con->query($query);
+							$result_odd = $con->query($query_odd);
+							//var_dump("Result Even :",$result);
+							//var_dump("Result ODD : ", $result_odd);
+							
+							//if the row is not empty
+							if ($result->num_rows > 0) {
+								while ($fetch=$result->fetch_assoc()) {
+									echo '<div class="col-lg-12">';
+										//click on article and it takes you to id in database. Convert image to binary code you can use
+										echo '<h5 class="pull-left time_to_read">'. $fetch["time_to_read"]. '</h5>'.'<h5 class="pull-right article_date">'. $fetch["article_date"]. '</h5>'; 
+										echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="/media/'.$fetch['media'].'" class="article img-responsive center-block" /></a>';
+										//new line
+										echo nl2br("\n");
+										echo '<div class = "headline">';
+											echo $fetch['headline'];
+											echo nl2br("\n");
+										echo '</div>';	
+										echo nl2br("\n");
+									echo '</div>';
+								}	
+							}
+							?>
+						</div>
+						<div class="col-md-6">
+							<?php
+							if ($result_odd->num_rows > 0) {
+								while ($fetch_odd = $result_odd->fetch_assoc()) {
+									echo '<div class="col-lg-12">';
+										//click on article and it takes you to id in database. Convert image to binary code you can use
+										echo '<h5 class="pull-left time_to_read">'. $fetch_odd["time_to_read"]. '</h5>'.'<h5 class="pull-right article_date">'. $fetch_odd["article_date"]. '</h5>'; 
+										echo '<a href="articles.php?image=' . $fetch_odd['id'] .'"><img src="/media/'.$fetch_odd['media'].'" class="article img-responsive center-block" /></a>';
+										//new line
+										echo nl2br("\n");
+										echo '<div class = "headline">';
+											echo $fetch_odd['headline'];
+											echo nl2br("\n");
+										echo '</div>';	
+										echo nl2br("\n");
+									echo '</div>';	
+								}
+							}						
+							//close the connection
+							$con->close();
+							?>	
+						</div>
 					</div>
-
-
-<!-- above has been copied-->
-
+				
+					</div>
 				</div>
 			</div>
-			<div>
 		</div>
+
 			    <div id = "pagination_controls"><?php echo $paginationCtrls; ?></div>
 			</div>
 

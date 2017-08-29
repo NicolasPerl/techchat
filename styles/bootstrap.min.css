@@ -43,14 +43,16 @@ div.social {
 
 
 body {
-	background: url("/Images/grey_tile_background.png")no-repeat center center fixed;
+	/*background: url("/Images/grey_tile_background.png")no-repeat center center fixed;*/
 	background-size: cover;
+	background: url("/Images/background.png");
 	font-family: "Times New Roman", Times, serif;
 	letter-spacing: 2px;
 	font-size: 1.5625em;
 	padding-top: 0px;
 
 }
+
 
 .video-container {
 	position:relative;
@@ -273,40 +275,6 @@ li {
 /*.show {display: block;}
 */
 
-.typed-cursor{
-            opacity: 1;
-            font-weight: 100;
-            -webkit-animation: blink 0.7s infinite;
-            -moz-animation: blink 0.7s infinite;
-            -ms-animation: blink 0.7s infinite;
-            -o-animation: blink 0.7s infinite;
-            animation: blink 0.7s infinite;
-        }
-        @-keyframes blink{
-            0% { opacity:1; }
-            50% { opacity:0; }
-            100% { opacity:1; }
-        }
-        @-webkit-keyframes blink{
-            0% { opacity:1; }
-            50% { opacity:0; }
-            100% { opacity:1; }
-        }
-        @-moz-keyframes blink{
-            0% { opacity:1; }
-            50% { opacity:0; }
-            100% { opacity:1; }
-        }
-        @-ms-keyframes blink{
-            0% { opacity:1; }
-            50% { opacity:0; }
-            100% { opacity:1; }
-        }
-        @-o-keyframes blink{
-            0% { opacity:1; }
-            50% { opacity:0; }
-            100% { opacity:1; }
- } 
 
 div#pagination_controls {
 	color: black;
