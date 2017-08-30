@@ -233,15 +233,13 @@
 			                <!--typed.js ends here -->
 
 						</div>
+						<!--
 						<div class="col-xs-12 col-md-4 test2">
-			    			<form action="./Utilities/email.php" method="post" class="form-inline email_signup">
-							  <div class="form-group">
-							    <label for="exampleInputEmail2"></label>
-							    <input type="email" name="emails" class="form-control" id="exampleInputEmail2" placeholder="Input your email to...">
-							  </div>
-							  <button type="submit" class="btn btn-default">Be enlightend!</button>
+			    			<form action="./email.php" method="post" class="form-inline email_signup">
+							    <input type="Email" name="email-list" placeholder="Input your email to..."/>
+							  	<button name="submit" type="submit" class="btn btn-default">Be enlightend!</button>
 							</form>
-			    		</div>
+			    		</div>-->
 					</div>      
 				</div>
 			</div>
