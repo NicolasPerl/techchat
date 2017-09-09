@@ -4,16 +4,9 @@
     $email = $_POST["emails"];
     //$time = date.timezone("r");
     // open file and append name
-    /*
-    if ($fh = fopen ("./emails", "a"));
-    {
-        fwrite($fh, "$email\n");
-        fclose($fh);
-    }
-    */
-
     $fh = fopen ("./emails", "a");
-    fwrite($fh, "$email\n")
+    fwrite($fh, "$email");
+    fclose($fh);
     
    print <<< THANKS
 
