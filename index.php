@@ -296,7 +296,7 @@
 									$string_version = implode(',', $fetch);
 									echo '<h5 class="pull-left time_to_watch">'. $fetchDeets["time_to_watch"]. '</h5>'.'<h5 class="pull-right video_date">'. $fetchDeets["video_date"]. '</h5>';
 									//youtube link  
-									echo '<iframe id="videoList" width="300" height="300" src="https://www.youtube.com/embed/'. $fetch["vidID"].'?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
+									echo '<iframe id="videoList" width="320" height="180" src="https://www.youtube.com/embed/'. $fetch["vidID"].'?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
 									echo nl2br("\n");
 									// fetch headline
 									$fetchH = $result2->fetch_assoc();
