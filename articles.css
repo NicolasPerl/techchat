@@ -91,17 +91,64 @@ button.back:after {
 
 h1 {
 	text-align: center;
-	padding-left: 20%;
-	padding-right: 20%;
+	padding-left: 15%;
+	padding-right: 15%;
 	padding-top: 8%;
+}
+
+.headline {
+	font-family: 'Open Sans', sans-serif;
 }
 
 p {
 	text-align: center;
-	padding-left: 20%;
-	padding-right: 20%;
+	padding-left: 15%;
+	padding-right: 15%;
 	font-size: 21px;
 }
+
+.story {
+	font-family: 'Vollkorn', serif;
+	font-size: 25px;
+	margin-top: 25px;
+}
+
+.related {
+	margin-top: 100px;
+}
+
+.related-stories {
+	text-align: center;
+	color: gray;
+	margin-bottom: -30px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid gray;
+	font-family: 'Lato', sans-serif;
+	font-weight: 800;
+}
+
+.related-headline {
+	text-align: center;
+	margin-top: 100px;
+	margin-bottom: 10px;
+	font-weight: 600;
+	font-size: 17px;
+	font-family: 'Lato', sans-serif;
+}
+
+.time_to_read {
+	color: gray;
+	font-size: 10px;
+	font-family: 'Lato', sans-serif;
+}
+
+.article_date {
+	color: gray;
+	font-size: 10px;
+	font-family: 'Lato', sans-serif;
+}
+
+
 
 .fb-comments {
 	padding-left: 25%;
