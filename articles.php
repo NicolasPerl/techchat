@@ -5,7 +5,7 @@
 		article
 	</title>
 
-	<link href="/styles/articles.css" rel="stylesheet" title="basic style" type="text/css" media="all"/>
+	<link href="/articles.css" rel="stylesheet" title="basic style" type="text/css" media="all"/>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -54,6 +54,10 @@
 	
 			while ($fetch=$result->fetch_assoc()) {
 				//var_dump($fetch);
+				echo '<button class="back" onclick="history.back()">Home</button>';
+				echo '<img src="/Images/logo.png" class="logo"></img>';
+				//echo '<input type="button" class="back-button" value="Home" onclick="history.back()"></input>';
+				//echo '<a href="www.techchat.co" class="btn btn-default">Home</a>';
 				echo '<h1>'.$fetch['headline'].'</h1>';
 				echo "<br>";
 				echo '<img src="/media/'.$fetch['media'].'" class="article-pic img-rounded center-block img-responsive" />';
