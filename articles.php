@@ -43,7 +43,7 @@
 	<div class="row">
 			<?php
 
-				echo '<a href="www.techchat.co"><button class="back">Home</button></a>';
+				echo '<a href="/index.php"><button class="back">Home</button></a>';
 				echo '<div class="fb-follow" data-href="https://www.facebook.com/techchatt?ref=aymt_homepage_panel" data-layout="button" data-size="large" data-show-faces="true"></div>';
 				echo '<img src="/Images/logo.png" class="logo"></img>';
 
