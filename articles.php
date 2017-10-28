@@ -32,11 +32,11 @@
 
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
-	  fjs.parentNode.insertBefore(js, fjs);
+ 		 var js, fjs = d.getElementsByTagName(s)[0];
+  		if (d.getElementById(id)) return;
+  		js = d.createElement(s); js.id = id;
+  		js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10';
+  		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 
 <div class="container">
@@ -44,7 +44,9 @@
 			<?php
 
 				echo '<a href="www.techchat.co"><button class="back">Home</button></a>';
+				echo '<div class="fb-follow" data-href="https://www.facebook.com/techchatt?ref=aymt_homepage_panel" data-layout="button" data-size="large" data-show-faces="true"></div>';
 				echo '<img src="/Images/logo.png" class="logo"></img>';
+
 				
 				$imageID = intval($_GET["image"]);
 				//$tag = intval($_GET["tag"]);
@@ -103,7 +105,10 @@
 							echo '<img src="/media/'.$fetch['media'].'" class="article-pic img-rounded center-block img-responsive" />';
 							echo "<br>";
 							echo nl2br('<p class="story">'.$fetch['story'].'</p>');
+							echo '<div class="fb-share-button" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u&amp;src=sdkpreparse">Share</a></div>';
 						echo '</div>';
+
+
 						//echo '<div class="container">';
 						//echo '<div class="fb-like" data-href="https://www.facebook.com/techchatt/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="true"></div>';
 						//echo '<div class="fb-comments"  data-href="http://localhost:8000/articles.php?image=2" data-numposts="5"></div>';
