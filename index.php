@@ -313,17 +313,26 @@
 						?>						
 					</div>
 			
-<!--below has been copied-->
 
+
+
+			
+
+<!--below has been copied-->
 
 				<div class="col-md-8">
 					<h1 id="stories"> Short Stories </h1>
 					<div class="row">
 						<div class="col-md-6">
-							<?php
+<!--article news card snippet-->
+							<!--<div class="container">-->
+							  <!-- Normal Demo
+							  <div class="column">-->
+							    <!-- Post-->
+							    <?php
 							include "mysqli_connection.php";
-							$query = "SELECT id, headline, media, article_date, time_to_read, tag FROM articles WHERE id % 2 = 0 ORDER BY id DESC $limit";
-							$query_odd = "SELECT id, headline, media, article_date, time_to_read, tag FROM articles WHERE id % 2 = 1 ORDER BY id DESC $limit";
+							$query = "SELECT id, headline, media, article_date, time_to_read, description, category FROM articles WHERE id % 2 = 0 ORDER BY id DESC $limit";
+							$query_odd = "SELECT id, headline, media, article_date, time_to_read, description, category FROM articles WHERE id % 2 = 1 ORDER BY id DESC $limit";
 							//query the result and assign in to $result
 							$result = $con->query($query);
 							$result_odd = $con->query($query_odd);
@@ -331,56 +340,80 @@
 							//var_dump("Result ODD : ", $result_odd);
 							
 							//if the row is not empty
+							
 							if ($result->num_rows > 0) {
 								while ($fetch=$result->fetch_assoc()) {
 									echo '<div class="col-lg-12">';
-										//click on article and it takes you to id in database. Convert image to binary code you can use
-										echo '<h5 class="pull-left time_to_read">'. $fetch["time_to_read"]. '</h5>'.'<h5 class="pull-right article_date">'. $fetch["article_date"]. '</h5>'; 
-										echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="/media/'.$fetch['media'].'" class="article img-responsive center-block" /></a>';
-										//new line
-										echo nl2br("\n");
-										echo '<div class = "headline">';
-											echo $fetch['headline'];
-											echo nl2br("\n");
-										echo '</div>';	
-										echo nl2br("\n");
-									echo '</div>';
+										echo '<div class="post-module">';
+							      //Thumbnail
+							      			echo '<div class="thumbnail"> ';
+										        echo '<div class="date">';
+										          	echo '<div class="day">'. $fetch["article_date"]. '</div>';
+										        echo '</div>';
+										          	//echo '<div class="month">Mar</div>';
+										        echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="/media/'.$fetch['media'].'" class="article img-responsive center-block" /></a>';
+										      	
+										      // Post Content
+										      echo '<div class="post-content">';
+										        echo '<div class="category">'. $fetch["category"]. '</div>';
+										        echo '<h1 class="title">'. $fetch['headline']. '</h1>';
+										        echo '<p class="description">'. $fetch["description"]. '</p>';
+										        echo '<div class="post-meta"><span class="timestamp">'.$fetch["time_to_read"]. '</div>';
+										      echo '</div>';
+							      			echo '</div>';
+							    		echo '</div>';
+							    	echo '</div>';
+
+
+										//click on article and it takes you to id in database.
 								}	
 							}
+							
 							?>
+
+<!--article news card snippet above-->	
 						</div>
+
 						<div class="col-md-6">
 							<?php
-							if ($result_odd->num_rows > 0) {
-								while ($fetch_odd = $result_odd->fetch_assoc()) {
-									echo '<div class="col-lg-12">';
-										//click on article and it takes you to id in database. Convert image to binary code you can use
-										echo '<h5 class="pull-left time_to_read">'. $fetch_odd["time_to_read"]. '</h5>'.'<h5 class="pull-right article_date">'. $fetch_odd["article_date"]. '</h5>'; 
-										echo '<a href="articles.php?image=' . $fetch_odd['id'] .'"><img src="/media/'.$fetch_odd['media'].'" class="article img-responsive center-block" /></a>';
-										//new line
-										echo nl2br("\n");
-										echo '<div class = "headline">';
-											echo $fetch_odd['headline'];
-											echo nl2br("\n");
-										echo '</div>';	
-										echo nl2br("\n");
-									echo '</div>';	
-								}
-							}						
+								if ($result_odd->num_rows > 0) {
+										while ($fetch_odd=$result_odd->fetch_assoc()) {
+											echo '<div class="col-lg-12">';
+												echo '<div class="post-module">';
+									      //Thumbnail
+									      			echo '<div class="thumbnail">';
+												        echo '<div class="date">';
+												          	echo '<div class="day">'. $fetch_odd["article_date"]. '</div>';
+												          	//echo '<div class="month">Mar</div>';
+												        echo '</div>';
+												        	echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="/media/'.$fetch_odd['media'].'" class="article img-responsive center-block" /></a>';
+												      	
+												      // Post Content
+												      echo '<div class="post-content">';
+												        echo '<div class="category">'. $fetch_odd["category"]. '</div>';
+												        echo '<h1 class="title">'. $fetch_odd['headline']. '</h1>';
+												        echo '<p class="description">'. $fetch_odd["description"]. '</p>';
+												        echo '<div class="post-meta"><span class="timestamp">'.$fetch_odd["time_to_read"]. '</div>';
+												      echo '</div>';
+									      			echo '</div>';
+									    		echo '</div>';
+									    	echo '</div>';
+												//click on article and it takes you to id in database. Convert image to binary code you can use
+												
+										}	
+									}
 							//close the connection
 							$con->close();
-							?>	
+							?>
 						</div>
 					</div>
-				
-					</div>
 				</div>
-			</div>
-		</div>
 
-			    <div id = "pagination_controls"><?php echo $paginationCtrls; ?></div>
-			</div>
 
+			    	<div id = "pagination_controls"><?php echo $paginationCtrls; ?></div>
+				</div>
+			</div><!--container div-->
+		</div><!--post div-->
 			<!--
 			<footer>
 		        <div class="row">
