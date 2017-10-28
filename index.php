@@ -386,7 +386,7 @@
 												          	echo '<div class="day">'. $fetch_odd["article_date"]. '</div>';
 												          	//echo '<div class="month">Mar</div>';
 												        echo '</div>';
-												        	echo '<a href="articles.php?image=' . $fetch['id'] .'"><img src="/media/'.$fetch_odd['media'].'" class="article img-responsive center-block" /></a>';
+												        	echo '<a href="articles.php?image=' . $fetch_odd['id'] .'"><img src="/media/'.$fetch_odd['media'].'" class="article img-responsive center-block" /></a>';
 												      	
 												      // Post Content
 												      echo '<div class="post-content">';
