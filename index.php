@@ -113,6 +113,8 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
+	<link href="https://fonts.googleapis.com/css?family=Arvo|Lato|Open+Sans:800|Vollkorn" rel="stylesheet">
+
 	<!--<link rel="stylesheet" type="text/css" href= "style.php"/>-->
 
 	<!--Favicon Icon on for tabs -->
@@ -274,44 +276,7 @@
 		<div class="post">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4">
-						<h1 id="videos"> Videos </h1>
-						<?php
-						include "mysqli_connection.php";				
-						//vidID queries must be alone
-						$query = "SELECT vidID FROM videos WHERE id != (SELECT MAX(id) FROM videos) ORDER BY id DESC $limitvidID";
-						$secondQuery = "SELECT headline FROM videos WHERE id != (SELECT MAX(id) FROM videos) ORDER BY id DESC $limitvidID";
-						$videoDeets = "SELECT video_date, time_to_watch FROM videos WHERE id != (SELECT MAX(id) FROM videos) ORDER BY id DESC $limitvidID";
-						//query the result and assign in to $result
-						$result = $con->query($query);
-						$result2 = $con->query($secondQuery);
-						$resultDeets = $con->query($videoDeets);
-						//if the row is not empty
-						if ($result->num_rows > 0) {
-							while ($fetch=$result->fetch_assoc()) {
-								// fetch video details
-								$fetchDeets=$resultDeets->fetch_assoc();
-								echo '<div class="col-md-12">';
-									//convert array to string
-									$string_version = implode(',', $fetch);
-									echo '<h5 class="pull-left time_to_watch">'. $fetchDeets["time_to_watch"]. '</h5>'.'<h5 class="pull-right video_date">'. $fetchDeets["video_date"]. '</h5>';
-									//youtube link  
-									echo '<iframe id="videoList" width="320" height="180" src="https://www.youtube.com/embed/'. $fetch["vidID"].'?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
-									echo nl2br("\n");
-									// fetch headline
-									$fetchH = $result2->fetch_assoc();
-									$string_versionH = implode(',', $fetchH);
-									echo '<div class = "headline">';
-										echo $string_versionH;
-									echo '</div>';
-									echo nl2br("\n");
-								echo '</div>';
-							}
-						}
-						//close the connection
-						$con->close();
-						?>						
-					</div>
+					
 			
 
 
@@ -356,7 +321,7 @@
 										      // Post Content
 										      echo '<div class="post-content">';
 										        echo '<div class="category">'. $fetch["category"]. '</div>';
-										        echo '<h1 class="title">'. $fetch['headline']. '</h1>';
+										        echo '<a href="articles.php?image=' . $fetch['id'] .'"><h1 class="title">'. $fetch['headline']. '</h1></a>';
 										        echo '<p class="description">'. $fetch["description"]. '</p>';
 										        echo '<div class="post-meta"><span class="timestamp">'.$fetch["time_to_read"]. '</div>';
 										      echo '</div>';
@@ -391,7 +356,7 @@
 												      // Post Content
 												      echo '<div class="post-content">';
 												        echo '<div class="category">'. $fetch_odd["category"]. '</div>';
-												        echo '<h1 class="title">'. $fetch_odd['headline']. '</h1>';
+												        echo '<a href="articles.php?image=' . $fetch_odd['id'] .'"><h1 class="title">'. $fetch_odd['headline']. '</h1></a>';
 												        echo '<p class="description">'. $fetch_odd["description"]. '</p>';
 												        echo '<div class="post-meta"><span class="timestamp">'.$fetch_odd["time_to_read"]. '</div>';
 												      echo '</div>';
@@ -407,6 +372,45 @@
 							?>
 						</div>
 					</div>
+				</div>
+				<div class="col-md-4">
+					<h1 id="videos"> Videos </h1>
+					<?php
+					include "mysqli_connection.php";				
+					//vidID queries must be alone
+					$query = "SELECT vidID FROM videos WHERE id != (SELECT MAX(id) FROM videos) ORDER BY id DESC $limitvidID";
+					$secondQuery = "SELECT headline FROM videos WHERE id != (SELECT MAX(id) FROM videos) ORDER BY id DESC $limitvidID";
+					$videoDeets = "SELECT video_date, time_to_watch FROM videos WHERE id != (SELECT MAX(id) FROM videos) ORDER BY id DESC $limitvidID";
+					//query the result and assign in to $result
+					$result = $con->query($query);
+					$result2 = $con->query($secondQuery);
+					$resultDeets = $con->query($videoDeets);
+					//if the row is not empty
+					if ($result->num_rows > 0) {
+						while ($fetch=$result->fetch_assoc()) {
+							// fetch video details
+							$fetchDeets=$resultDeets->fetch_assoc();
+							echo '<div class="col-md-12">';
+								//convert array to string
+								$string_version = implode(',', $fetch);
+								echo '<h5 class="pull-left time_to_watch">'. $fetchDeets["time_to_watch"]. '</h5>'.'<h5 class="pull-right video_date">'. $fetchDeets["video_date"]. '</h5>';
+								//youtube link  
+								echo '<iframe id="videoList" width="320" height="180" src="https://www.youtube.com/embed/'. $fetch["vidID"].'?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
+								echo nl2br("\n");
+								// fetch headline
+								$fetchH = $result2->fetch_assoc();
+								$string_versionH = implode(',', $fetchH);
+								echo '<div class = "headline">';
+									echo $string_versionH;
+								echo '</div>';
+								echo nl2br("\n");
+							echo '</div>';
+						}
+					}
+					//close the connection
+					$con->close();
+					?>						
+				</div>
 				</div>
 
 
