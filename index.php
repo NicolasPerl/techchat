@@ -142,7 +142,7 @@
 
 <body>
 
-<!-- Loader -->
+<!-- Loader 
 <div id="overlay">
 	<div class="flex-container">
 	  <div class="unit">
@@ -161,7 +161,7 @@
 	  </div>
 
 	</div>
-</div>
+</div>-->
 
 
 <!--Facebook API integration-->
