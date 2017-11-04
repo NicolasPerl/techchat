@@ -91,7 +91,6 @@
 				}
 				echo '</div>';						
 			?>	
-
 			<?php	
 				if ($result->num_rows > 0) {
 					while ($fetch=$result->fetch_assoc()) {
@@ -100,7 +99,7 @@
 						//echo '<input type="button" class="back-button" value="Home" onclick="history.back()"></input>';
 						//echo '<a href="www.techchat.co" class="btn btn-default">Home</a>';
 						echo '<div class="col-xs-9">';
-							echo '<h1 class="headline">'.$fetch['headline'].'</h1>';
+							echo '<h1 style= class="headline">'.$fetch['headline'].'</h1>';
 							echo "<br>";
 							echo '<img src="/media/'.$fetch['media'].'" class="article-pic img-rounded center-block img-responsive" />';
 							echo "<br>";

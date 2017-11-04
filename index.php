@@ -214,8 +214,8 @@
 							<!-- typed.js injection -->
 			                <div class="type-wrap">
 			                    <div id="typed-strings">
-			                        <h1>learn about <strong>tech</strong></h1>
-			                        <h1><em>short</em> and <em>simple</em> articles.</h1>
+			                        <h1>lets get to the <strong>point</strong></h1>
+			                        <h1><em>we</em> get to the <strong>point</strong>.</h1>
 			                    </div>
 			                    <span id="typed"></span>
 			                </div>
@@ -227,7 +227,7 @@
 			                    typeSpeed: 40,
 			                    loop: true,
 			                    backDelay: 800,
-			                    startDelay: 4000,
+			                    startDelay: 3000,
 			                    showCursor: true,
 			                    backSpeed: 20,
 			                    });
