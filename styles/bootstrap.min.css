@@ -46,9 +46,8 @@ div.social {
 }
 /
 body {
-	/*background: url("/Images/grey_tile_background.png")no-repeat center center fixed;*/
+	background: url(../Images/index-background.png)no-repeat center center fixed;
 	background-size: cover;
-	background: url("/Images/articles-background.png")no-repeat center center fixed;
 	font-family: "Times New Roman", Times, serif;
 	letter-spacing: 2px;
 	font-size: 1.5625em;

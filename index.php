@@ -108,6 +108,7 @@
 
 	<!-- Bootstrap Core CSS -->
 	<link href="/styles/bootstrap.min.css" rel="stylesheet" title="basic style" type="text/css" media="all"/>
+	
 
 	<script src="lib/typed.min.js" type="text/javascript"></script>
 
@@ -214,8 +215,8 @@
 							<!-- typed.js injection -->
 			                <div class="type-wrap">
 			                    <div id="typed-strings">
-			                        <h1>lets get to the <strong>point</strong></h1>
-			                        <h1><em>we</em> get to the <strong>point</strong>.</h1>
+			                        <h1>Videos and stories about <strong>modern tech</strong></h1>
+			                        <h1><em>Learn</em> something new in <strong>under 1 minute</strong>.</h1>
 			                    </div>
 			                    <span id="typed"></span>
 			                </div>
@@ -267,7 +268,7 @@
 						?>
 						<!--Jumbotron-->
 						<div class="video-container">
-							<iframe id="videoDay" width="100%" height="500" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>		
+							<iframe id="videoDay" width="100%" height="500" src="https://www.youtube.com/embed/<?php echo $string_version; ?>?rel=0&showinfo=0&autoplay=0&modestbranding=1" frameborder="0" allowfullscreen volume="0"></iframe>		
 						</div>
 					</div>
 				</div>
@@ -322,7 +323,7 @@
 										      echo '<div class="post-content">';
 										        echo '<div class="category">'. $fetch["category"]. '</div>';
 										        echo '<a href="articles.php?image=' . $fetch['id'] .'"><h1 class="title">'. $fetch['headline']. '</h1></a>';
-										        echo '<p class="description">'. $fetch["description"]. '</p>';
+										        echo '<a href="articles.php?image=' . $fetch['id'] .'"><p class="description">'. $fetch["description"]. '</p></a>';
 										        echo '<div class="post-meta"><span class="timestamp">'.$fetch["time_to_read"]. '</div>';
 										      echo '</div>';
 							      			echo '</div>';
@@ -395,7 +396,7 @@
 								$string_version = implode(',', $fetch);
 								echo '<h5 class="pull-left time_to_watch">'. $fetchDeets["time_to_watch"]. '</h5>'.'<h5 class="pull-right video_date">'. $fetchDeets["video_date"]. '</h5>';
 								//youtube link  
-								echo '<iframe id="videoList" width="320" height="180" src="https://www.youtube.com/embed/'. $fetch["vidID"].'?rel=0&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
+								echo '<iframe id="videoList" width="320" height="180" src="https://www.youtube.com/embed/'. $fetch["vidID"].'?rel=0&modestbranding=1&showinfo=0&autohide=1&autoplay=0" frameborder="0" allowfullscreen volume="0"></iframe>';
 								echo nl2br("\n");
 								// fetch headline
 								$fetchH = $result2->fetch_assoc();
