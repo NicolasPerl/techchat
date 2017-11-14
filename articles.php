@@ -81,7 +81,7 @@
 					while ($fetch_related = $result_related->fetch_assoc()) {
 							//click on article and it takes you to id in database. Convert image to binary code you can use
 							echo '<div class = "related-headline">';
-								echo $fetch_related['headline'];
+								echo '<a href="articles.php?image=' . $fetch_related['id'] .'">' . $fetch_related['headline'] . '</a>';
 								echo nl2br("\n");
 							echo '</div>';	
 							echo '<a href="articles.php?image=' . $fetch_related['id'] .'"><img src="/media/'.$fetch_related['media'].'" class="article img-responsive center-block" /></a>';
