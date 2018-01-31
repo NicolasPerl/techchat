@@ -19,6 +19,12 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
+	<!--Parsedown Script-->
+	<?php
+		require_once 'lib/parsedown-master/Parsedown.php';
+		$parsedown = new Parsedown();
+	?>
+	<!--Parsedown Script Ends-->
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -94,6 +100,8 @@
 			<?php	
 				if ($result->num_rows > 0) {
 					while ($fetch=$result->fetch_assoc()) {
+
+						$parsedown->text($fetch);
 						//var_dump($fetch);
 						
 						//echo '<input type="button" class="back-button" value="Home" onclick="history.back()"></input>';
@@ -103,7 +111,7 @@
 							echo "<br>";
 							echo '<img src="/media/'.$fetch['media'].'" class="article-pic img-rounded center-block img-responsive" />';
 							echo "<br>";
-							echo nl2br('<p class="story">'.$fetch['story'].'</p>');
+							echo nl2br('<p class="story">'.$parsedown->text($fetch['story']).'</p>');
 							echo '<div class="fb-share-button" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u&amp;src=sdkpreparse">Share</a></div>';
 						echo '</div>';
 
