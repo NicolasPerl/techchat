@@ -80,8 +80,9 @@ button.back:after {
 }
 
 .logo {
-	height: 175px;
-	width: 200px;
+	width: 40%;
+  max-width: 100px;
+  max-height: 125px;
 	margin-left: auto;
     margin-right: auto;
     margin-top: -75px;

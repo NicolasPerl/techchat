@@ -51,7 +51,7 @@
 
 				echo '<a href="/index.php"><button class="back">Home</button></a>';
 				echo '<div class="fb-follow" data-href="https://www.facebook.com/techchatt?ref=aymt_homepage_panel" data-layout="button" data-size="large" data-show-faces="true"></div>';
-				echo '<img src="/Images/logo.png" class="logo"></img>';
+				echo '<img src="/Images/tc-logo-no-background-notext.png" class="logo"></img>';
 
 				
 				$imageID = intval($_GET["image"]);

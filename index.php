@@ -209,7 +209,7 @@
 			    <div class="nav-container2">
 			    	<div class="row">
 			    		<div class="col-xs-4 col-md-3">
-			    			<img src="/Images/TechChatLogo.png" alt="logo" class="tc_logo"/>
+			    			<img src="/Images/tc-logo-no-background.png" alt="logo" class="tc_logo"/>
 			    		</div>
 			    		<div class="col-xs-8 col-md-5 test">
 							<!-- typed.js injection -->
