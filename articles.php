@@ -15,6 +15,9 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Arvo|Lato|Open+Sans:800|Vollkorn" rel="stylesheet">
 
+	<!--Favicon Icon on for tabs -->
+	<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico" />
+	
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>

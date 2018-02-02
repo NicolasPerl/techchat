@@ -119,7 +119,7 @@
 	<!--<link rel="stylesheet" type="text/css" href= "style.php"/>-->
 
 	<!--Favicon Icon on for tabs -->
-	    
+	<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico" />
 	<!--[if lt IE 9]>
 	        
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
